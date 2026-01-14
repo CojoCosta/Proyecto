@@ -5,4 +5,5 @@
     <string name="usuario">User</string>
     <string name="contraseña">Password</string>
     <string name="registrar">Sign in</string>
+    <string name="entrar">Enter</string>
 </resources>
