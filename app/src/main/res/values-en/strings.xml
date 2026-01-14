@@ -6,4 +6,9 @@
     <string name="contraseña">Password</string>
     <string name="registrar">Sign in</string>
     <string name="entrar">Enter</string>
+    <string name="tenerCuenta">I already have an account</string>
+    <string name="Nombre">Name</string>
+    <string name="Apellidos">Surnames</string>
+    <string name="Telefono">Telephone</string>
+    <string name="Fecha">Date</string>
 </resources>

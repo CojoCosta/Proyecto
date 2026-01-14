@@ -5,4 +5,12 @@
     <string name="contraseña">Contraseña</string>
     <string name="registrar">Registrarse</string>
     <string name="entrar">Entrar</string>
+    <string name="tenerCuenta">Ya tengo una cuenta</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Email" translatable="false">Email</string>
+    <string name="DNI" translatable="false">DNI</string>
+    <string name="Telefono">Teléfono</string>
+    <string name="Fecha">Fecha de nacimiento</string>
+    <string name="Apellidos">Apellidos</string>
+
 </resources>

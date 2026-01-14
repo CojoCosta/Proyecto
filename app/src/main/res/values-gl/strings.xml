@@ -6,4 +6,9 @@
     <string name="contraseña">Contrasinal</string>
     <string name="registrar">Rexistrarse</string>
     <string name="entrar">Entrar</string>
+    <string name="tenerCuenta">Xa teño unha conta</string>
+    <string name="Nombre">Nome</string>
+    <string name="Apellidos">Apelidos</string>
+    <string name="Telefono">Teléfono</string>
+    <string name="Fecha">Data de nacemento</string>
 </resources>
