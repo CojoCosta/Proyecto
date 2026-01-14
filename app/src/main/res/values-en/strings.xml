@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="titulo">Welcome</string>
+    <string name="nombreUsu">User Name</string>
+    <string name="usuario">User</string>
+    <string name="contraseña">Password</string>
+    <string name="registrar">Sign in</string>
+</resources>

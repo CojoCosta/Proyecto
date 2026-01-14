@@ -5,103 +5,101 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Blanco"
+    android:background="@color/Azul_Marino"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="411dp"
-        android:layout_height="71dp"
-        android:background="@color/Azul_Marino"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nombreUsu"
         android:layout_width="225dp"
         android:layout_height="38dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        android:text="Nombre de usuario"
+        android:text="@string/nombreUsu"
+        android:textAlignment="center"
+        android:textColor="@color/Blanco"
         android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="226dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="example@gmail.com"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/pass"
         android:layout_width="228dp"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:text="Contraseña"
+        android:layout_marginTop="40dp"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/Blanco"
         android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre_usuario" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/password"
         android:layout_width="228dp"
         android:layout_height="51dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Password"
-        android:inputType="text|textPassword"
+        android:inputType="@string/contraseña"
+        android:textColor="@color/Blanco"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="227dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:text="Email"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_usuario" />
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
 
     <EditText
         android:id="@+id/nombre_usuario"
         android:layout_width="228dp"
         android:layout_height="44dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="@string/usuario"
         android:inputType="text"
+        android:textColor="@color/Blanco"
         android:textColorHint="@color/cardview_dark_background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreUsu" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/titulo"
         android:layout_width="370dp"
         android:layout_height="61dp"
-        android:layout_marginTop="20dp"
-        android:text="Bienvenido"
+        android:text="@string/titulo"
         android:textAlignment="center"
         android:textAllCaps="false"
+        android:textColor="@color/Blanco"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        tools:layout_editor_absoluteY="91dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="111dp"
+        android:background="@color/Negro"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/registrar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/registrar"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/Blanco"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
