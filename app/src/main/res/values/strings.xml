@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Proyecto</string>
     <string name="titulo">Bienvenido</string>
     <string name="nombreUsu">Nombre de usuario</string>
     <string name="usuario">Usuario</string>

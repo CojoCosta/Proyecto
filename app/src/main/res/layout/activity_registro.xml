@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tenerCuenta"
+        android:id="@+id/tenerCuentaReg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/tenerCuenta"
@@ -44,10 +44,10 @@
         android:textColor="@color/Azul_Claro"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/nombreReg"
+        android:id="@+id/editNombreReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
 
     <EditText
-        android:id="@+id/apellidosReg2"
+        android:id="@+id/editApellidosReg"
         android:layout_width="210dp"
         android:layout_height="45dp"
         android:layout_marginEnd="50dp"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtApellidos" />
 
     <EditText
-        android:id="@+id/UsuarioReg"
+        android:id="@+id/editUsuarioReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
@@ -124,7 +124,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/editEmailReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
@@ -135,5 +135,69 @@
         app:layout_constraintBottom_toBottomOf="@+id/txtEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtEmail" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/contraseña"
+        android:textColor="@color/Azul_Claro"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+    <EditText
+        android:id="@+id/editPasswordReg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:hint="@string/contraseña"
+        android:inputType="text"
+        android:textColor="@color/Azul_Claro"
+        android:textColorHint="@color/Azul_Claro"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="0dp"
+        android:layout_height="84dp"
+        android:background="@color/Negro"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Nombre " />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/registrar"
+        android:textAlignment="center"
+        android:textColor="@color/Azul_Claro"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Blanco"
+        android:text="@string/registrar"
+        android:textColor="@color/Azul_Marino"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editPasswordReg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
