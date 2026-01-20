@@ -1,0 +1,68 @@
+1️⃣ Tabla Usuarios
+USUARIOS (
+    id_usuario        INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_usuario    VARCHAR(50) UNIQUE NOT NULL,
+    nombre            VARCHAR(50),
+    apellidos         VARCHAR(100),
+    email             VARCHAR(100) UNIQUE NOT NULL,
+    tlf               VARCHAR(20),
+    fecha_nacimiento  DATE,
+    fecha_creacion    DATE NOT NULL,
+    contraseña        VARCHAR(255) NOT NULL
+);
+
+
+🔹 Edad NO se guarda porque es un atributo derivado
+(se calcula a partir de fecha_nacimiento).
+
+2️⃣ Tabla Publicaciones
+PUBLICACIONES (
+    id_publicacion INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario     INT NOT NULL,
+    fecha_publicacion DATE NOT NULL,
+    num_likes      INT DEFAULT 0,
+    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario)
+);
+
+3️⃣ Relación Seguir (Usuario ↔ Usuario)
+
+Relación N:M consigo misma.
+
+SEGUIR (
+    id_seguidor   INT,
+    id_seguido    INT,
+    fecha_seguir  DATE,
+    PRIMARY KEY (id_seguidor, id_seguido),
+    FOREIGN KEY (id_seguidor) REFERENCES USUARIOS(id_usuario),
+    FOREIGN KEY (id_seguido)  REFERENCES USUARIOS(id_usuario)
+);
+
+4️⃣ Relación Dar Like (Usuario ↔ Publicaciones)
+DAR_LIKE (
+    id_usuario      INT,
+    id_publicacion  INT,
+    PRIMARY KEY (id_usuario, id_publicacion),
+    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario),
+    FOREIGN KEY (id_publicacion) REFERENCES PUBLICACIONES(id_publicacion)
+);
+
+5️⃣ Relación Comentar
+COMENTARIOS (
+    id_comentario   INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario      INT,
+    id_publicacion  INT,
+    comentario      TEXT NOT NULL,
+    fecha_comentario DATE NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario),
+    FOREIGN KEY (id_publicacion) REFERENCES PUBLICACIONES(id_publicacion)
+);
+
+6️⃣ Relación Compartir
+COMPARTIR (
+    id_usuario      INT,
+    id_publicacion  INT,
+    fecha_publicacion DATE,
+    PRIMARY KEY (id_usuario, id_publicacion),
+    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id_usuario),
+    FOREIGN KEY (id_publicacion) REFERENCES PUBLICACIONES(id_publicacion)
+);
