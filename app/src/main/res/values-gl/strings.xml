@@ -10,5 +10,5 @@
     <string name="Nombre">Nome</string>
     <string name="Apellidos">Apelidos</string>
     <string name="Telefono">Teléfono</string>
-    <string name="Fecha">Data de nacemento</string>
+    <string name="Fecha">Data de nac.</string>
 </resources>

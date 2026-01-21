@@ -13,7 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class InicioActivity extends AppCompatActivity {
+public class InicioSesionActivity extends AppCompatActivity {
     EditText editUsuario, editPassword;
     TextView txtRegistro;
     Button btnEntrar;
@@ -23,7 +23,7 @@ public class InicioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_inicio);
+        setContentView(R.layout.activity_inicio_sesion);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -37,7 +37,7 @@ public class InicioActivity extends AppCompatActivity {
     txtRegistro.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(InicioActivity.this, RegistroActivity.class);
+            Intent intent = new Intent(InicioSesionActivity.this, RegistroActivity.class);
             startActivity(intent);
         }
     });

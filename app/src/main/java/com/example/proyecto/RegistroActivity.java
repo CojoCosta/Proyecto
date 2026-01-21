@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -40,7 +39,6 @@ public class RegistroActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPasswordReg);
         tenerCuenta = findViewById(R.id.tenerCuentaReg);
         btnRegistrar = findViewById(R.id.btnRegistrar);
-
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,16 +46,20 @@ public class RegistroActivity extends AppCompatActivity {
                     Toast.makeText(RegistroActivity.this, "Hay algún campo vacio", Toast.LENGTH_SHORT).show();
                 } else {
                     usuario = new Usuario(editNombre.toString(), editApellidos.toString(), editUsuario.toString(), editEmail.toString(), editPassword.toString());
+                    Intent intent = new Intent();
+                    //intent.putExtra("registro", usuario);
+                    setResult(RESULT_OK,intent);
+                    finish();
                 }
             }
         });
         tenerCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegistroActivity.this, InicioActivity.class);
+                Intent intent = new Intent(RegistroActivity.this, InicioSesionActivity.class);
                 startActivity(intent);
             }
         });
-    }
 
+    }
 }

@@ -11,7 +11,7 @@
     <string name="Email" translatable="false">Email</string>
     <string name="DNI" translatable="false">DNI</string>
     <string name="Telefono">Teléfono</string>
-    <string name="Fecha">Fecha de nacimiento</string>
+    <string name="Fecha">Fecha de nac.</string>
     <string name="Apellidos">Apellidos</string>
 
 </resources>
