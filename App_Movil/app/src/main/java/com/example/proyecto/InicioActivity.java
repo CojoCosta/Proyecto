@@ -13,7 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class InicioSesionActivity extends AppCompatActivity {
+public class InicioActivity extends AppCompatActivity {
     EditText editUsuario, editPassword;
     TextView txtRegistro;
     Button btnEntrar;
@@ -37,7 +37,7 @@ public class InicioSesionActivity extends AppCompatActivity {
     txtRegistro.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(InicioSesionActivity.this, RegistroActivity.class);
+            Intent intent = new Intent(InicioActivity.this, RegistroActivity.class);
             startActivity(intent);
         }
     });
