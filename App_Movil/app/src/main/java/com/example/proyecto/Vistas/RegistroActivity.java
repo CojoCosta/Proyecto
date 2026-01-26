@@ -25,6 +25,7 @@ public class RegistroActivity extends AppCompatActivity {
     EditText editNombre, editApellidos, editUsuario, editEmail, editPassword, editFecha;
     TextView tenerCuenta;
     Button btnRegistrar;
+    APIREST apirest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,24 +45,17 @@ public class RegistroActivity extends AppCompatActivity {
         editFecha = findViewById(R.id.editFechaReg);
         tenerCuenta = findViewById(R.id.tenerCuentaReg);
         btnRegistrar = findViewById(R.id.btnRegistrar);
+        apirest = new APIREST();
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editNombre.getText().equals("") || editApellidos.getText().equals("") || editUsuario.getText().equals("") || editEmail.getText().equals("") || editPassword.getText().equals("")) {
-                    Toast.makeText(RegistroActivity.this, "Hay algún campo vacio", Toast.LENGTH_SHORT).show();
-                } else {
-                    usuario = new Usuario(editNombre.toString(), editApellidos.toString(), editUsuario.toString(), editEmail.toString(), editPassword.toString());
-                    Intent intent = new Intent();
-                    //intent.putExtra("registro", usuario);
-                    setResult(RESULT_OK,intent);
-                    finish();
-                }
+                apirest.anadirUsuario(editNombre.getText().toString(), editApellidos.getText().toString(), editUsuario.getText().toString(), editEmail.getText().toString(), editPassword.getText().toString(), editFecha.getText().toString());
             }
         });
         tenerCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegistroActivity.this, APIREST.InicioSesionActivity.class);
+                Intent intent = new Intent(RegistroActivity.this, InicioActivity.class);
                 startActivity(intent);
             }
         });
