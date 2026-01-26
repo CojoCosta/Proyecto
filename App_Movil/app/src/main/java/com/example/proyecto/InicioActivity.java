@@ -13,6 +13,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.proyecto.Vistas.RegistroActivity;
+
 public class InicioActivity extends AppCompatActivity {
     EditText editUsuario, editPassword;
     TextView txtRegistro;
