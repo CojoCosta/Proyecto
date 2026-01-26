@@ -55,37 +55,4 @@ public class APIREST {
             }
         }).start();
     }
-
-//    public static class RegistroActivity extends AppCompatActivity {
-//        EditText editNombre, editApellidos, editUsuario, editEmail, editPassword, editFecha;
-//        TextView txtRegistro;
-//        Button btnRegistrar;
-//
-//
-//        @Override
-//        protected void onCreate(Bundle savedInstanceState) {
-//            super.onCreate(savedInstanceState);
-//            EdgeToEdge.enable(this);
-//            setContentView(R.layout.activity_registro);
-//            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//                return insets;
-//            });
-//            editNombre= findViewById(R.id.editNombreReg);
-//            editApellidos = findViewById(R.id.editApellidosReg);
-//            editUsuario = findViewById(R.id.editUsuarioReg);
-//            editEmail = findViewById(R.id.editEmailReg);
-//            editPassword = findViewById(R.id.editPasswordReg);
-//            btnRegistrar = findViewById(R.id.btnRegistrar);
-//            btnRegistrar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(RegistroActivity.this, RegistroActivity.class);
-//
-//                startActivity(intent);
-//            }
-//        });
-//        }
-//    }
 }
