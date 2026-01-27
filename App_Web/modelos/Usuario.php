@@ -18,12 +18,8 @@ Class Usuario{
         $this->email = "";
         $this->password = "";
         $this->fechaNacimiento = "";
-        $this->database = require_once '../App_Web/conexion/Conexion.php';
+        $this->database = Conexion::conexion();
     }
-    
-    // public function __construct(){
-
-    // }
     #region SET Y GET
     public function setNombre($nombre){
         $this->nombre = $nombre;
@@ -74,5 +70,21 @@ Class Usuario{
         $this -> database = null;
         return $result;
     }
+        public function getUsuario(){
+        $sql = "SELECT * FROM usuarios";
+        $result = $this -> database -> query($sql);
+        $this -> usuario = $result -> fetchAll(PDO:: FETCH_ASSOC);
+        $this -> database = null;
+        return $this -> usuario;
+    }
+
+    public function borrarUsuario($nombreUsuario){
+        $sql = "DELETE FROM usuarios WHERE nombreUsuario LIKE '$nombreUsuario'";
+        $result = $this->database->query($sql);
+        $this->database = null;
+        return $result;
+    }
+
+
 
 }

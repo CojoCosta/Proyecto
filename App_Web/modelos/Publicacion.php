@@ -1,13 +1,17 @@
 <?php
 Class Publicacion{
+    private $publicacion;
     private $idUsuario;
     private $fechaPublicacion;
     private $numLikes;
+    private $database;
 
     public function __construct($idUsuario, $fechaPublicacion, $numLikes){
-        $this->idUsuario = $idUsuario;
-        $this->fechaPublicacion = $fechaPublicacion;
-        $this->numLikes = $numLikes;
+        $this->publicacion = array();
+        $this->idUsuario = "";
+        $this->fechaPublicacion = "";
+        $this->numLikes = 0;
+        $this->database =  Conexion::conexion();
     }
 
     public function setIdUsuario($IdUsuario){

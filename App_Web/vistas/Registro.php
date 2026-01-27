@@ -79,8 +79,7 @@
     <?php
     if ((isset($_POST['nombre'])) && ($_POST['nombre'] != '') && (isset($_POST['apellidos'])) && ($_POST['apellidos'] != '') && (isset($_POST['nombreUsuario'])) && ($_POST['nombreUsuario'] != '') && (isset($_POST['email'])) && ($_POST['email'] != '') && (isset($_POST['password'])) && ($_POST['password'] != '') && (isset($_POST['fechaNacimiento'])) && ($_POST['fechaNacimiento'] != '')) {
         //llamada al moddelo logico
-        require_once 'modelos/Usuario.php';
-
+        require_once '../App_Web/modelos/Usuario.php';
         //crear objeto
         $usuario = new Usuario();
         //Booleana
@@ -97,12 +96,12 @@
     require_once 'Header.php'
     ?>
     <form action="" <?php echo $_SERVER['PHP_SELF'] ?>"" method="post">
-        <input type="text" name="nombre" id="nombre" placeholder="nombre"><br><br>
-        <input type="text" name="apellidos" id="apellidos" placeholder="apellidos"><br><br>
-        <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="nombreUsuario"><br><br>
-        <input type="email" name="email" id="email" placeholder="email"><br><br>
-        <input type="password" name="password" id="password" placeholder="password"><br><br>
-        <input type="date" name="fechaNacimiento" id="fechaNacimiento" placeholder="fechaNacimiento"><br><br>
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre"><br><br>
+        <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos"><br><br>
+        <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="NombreUsuario"><br><br>
+        <input type="email" name="email" id="email" placeholder="Email"><br><br>
+        <input type="password" name="password" id="password" placeholder="Contraseña"><br><br>
+        <input type="date" name="fechaNacimiento" id="fechaNacimiento"><br><br>
         <input type="submit" value="Registrarse">
     </form>
     <?php
