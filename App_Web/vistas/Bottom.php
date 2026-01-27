@@ -17,7 +17,7 @@
     #bottom {
         width: 100%;
         height: 60px;
-        background-color: #0a1f44;
+        background-color: #002540;
         position: fixed;
         bottom: 0;
         left: 0;

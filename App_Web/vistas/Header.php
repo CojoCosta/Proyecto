@@ -8,7 +8,7 @@
     #header {
         width: 100%;
         height: 10%;
-        background-color: #0a1f44; /* Azul oscuro */
+        background-color: #002540;/* Azul oscuro */
         display: flex;
         align-items: center;
         padding: 0 20px;
@@ -21,7 +21,7 @@
 
     /* Imagen del logo */
     #logo img {
-        height: 45px;
+        height: 120px;
         width: auto;
         cursor: pointer;
     }
@@ -33,6 +33,6 @@
 </style>
 <div id = "header">
     <div id = "logo">
-        <img src="vistas/logoTransparent.png">
+        <img src="../recursos/logoTransparent.png">
     </div>
 </div>

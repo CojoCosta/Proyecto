@@ -15,14 +15,6 @@
             color: #222;
         }
 
-        /* body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000000ff;
-            color: #e0e0e0;
-        } */
-
         form {
             width: 100%;
             max-width: 600px;
@@ -37,7 +29,7 @@
         form input[type="email"],
         form input[type="password"],
         form input[type="date"] {
-            width: 75%;
+            width: 100%;
             padding: 12px;
             /* margin-bottom: 16px; */
             border: 1px solid #ccc;
@@ -73,7 +65,7 @@
         }
 
         form input[type="submit"]:hover {
-            background-color: #0a1f44;
+            background-color: #002540;
         }
     </style>
     <?php
