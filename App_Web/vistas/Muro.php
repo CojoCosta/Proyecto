@@ -10,6 +10,12 @@ require_once 'Header.php'
     <link rel="icon" href="../recursos/logoTransparent.png" type="image/png">
 </head>
 <body>
+    <?php
+    require_once 'Header.php'
+    ?>
     
+    <?php
+    require_once 'Bottom.php'
+    ?>
 </body>
 </html>

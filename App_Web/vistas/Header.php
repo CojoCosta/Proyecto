@@ -7,16 +7,18 @@
 
     #header {
         width: 100%;
-        height: 10%;
+        height: 15%;
         background-color: #002540;/* Azul oscuro */
         display: flex;
         align-items: center;
+        justify-content: center;
         padding: 0 20px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
     #logo {
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     /* Imagen del logo */
@@ -28,7 +30,7 @@
 
     /* Efecto hover sutil */
     #logo img:hover {
-        opacity: 0.9;
+        opacity: 1;
     }
 </style>
 <div id = "header">

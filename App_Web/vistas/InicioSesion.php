@@ -67,7 +67,7 @@
     </style>
 </head>
 <body>
-      <?php
+    <?php
     require_once 'Header.php'
     ?>
     <form action="" <?php echo $_SERVER['PHP_SELF'] ?>"" method="post">
