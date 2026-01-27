@@ -10,5 +10,24 @@ Class Publicacion{
         $this->numLikes = $numLikes;
     }
 
-    
+    public function setIdUsuario($IdUsuario){
+        $this->idUsuario = $IdUsuario;
+    }
+    public function getIdUsuario(){
+        return $this->idUsuario;
+    }
+
+    public function setFechaPublicacion($fechaPublicacion){
+        $this->fechaPublicacion = $fechaPublicacion;
+    }
+    public function getFechaPublicacion(){
+        return $this->fechaPublicacion;
+    }
+
+    public function setNumLikes($numLikes){
+        $this->numLikes = $numLikes;
+    }
+    public function getNumLikes(){
+        return $this->numLikes;
+    }
 }

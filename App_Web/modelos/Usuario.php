@@ -1,22 +1,30 @@
 <?php
 
 Class Usuario{
+    private $usuario;
     private $nombre;
     private $apellidos;
     private $nombreUsuario;
     private $email;
     private $password;
     private $fechaNacimiento;
+    private $database;
 
-    public function __construct($nombre, $apellidos, $nombreUsuario, $email, $password, $fechaNacimiento){
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-        $this->nombreUsuario = $nombreUsuario;
-        $this->email = $email;
-        $this->password = $password;
-        $this->$fechaNacimiento = $fechaNacimiento;
+    public function __construct(){
+        $this->usuario = array();
+        $this->nombre = "";
+        $this->apellidos = "";
+        $this->nombreUsuario = "";
+        $this->email = "";
+        $this->password = "";
+        $this->fechaNacimiento = "";
+        $this->database = require_once '../App_Web/conexion/Conexion.php';
     }
+    
+    // public function __construct(){
 
+    // }
+    #region SET Y GET
     public function setNombre($nombre){
         $this->nombre = $nombre;
     }
@@ -58,5 +66,13 @@ Class Usuario{
     public function getFechaNacimineto(){
         return $this->fechaNacimiento;
     }
-    
+    #endregion
+
+    public function setUsuario($nombre, $apellidos, $nombreUsuario, $email, $password, $fechaNacimiento){
+        $sql = "INSERT INTO usuarios (nombre, apellidos, nombreUsuario, email, password, fechaNacimiento) VALUES ('$nombre', '$apellidos', '$nombreUsuario', '$email', '$fechaNacimiento')";
+        $result = $this->database->query($sql);
+        $this -> database = null;
+        return $result;
+    }
+
 }

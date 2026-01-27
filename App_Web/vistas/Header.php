@@ -1,23 +1,19 @@
 <style>
-    /* Reset básico */
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 
-    /* Header principal */
     #header {
         width: 100%;
-        height: 70px;
+        height: 10%;
         background-color: #0a1f44; /* Azul oscuro */
         display: flex;
         align-items: center;
         padding: 0 20px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
-
-    /* Contenedor del logo */
     #logo {
         display: flex;
         align-items: center;
@@ -37,6 +33,6 @@
 </style>
 <div id = "header">
     <div id = "logo">
-        <img src="App_Web\recursos\logoTransparent.png">
+        <img src="vistas/logoTransparent.png">
     </div>
 </div>
