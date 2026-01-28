@@ -28,7 +28,7 @@ public class APIREST {
         new Thread(()-> {
             try {
                 //cambiar ip por 192.130.0.13 si no funciona en el emulador
-                URL url = new URL("http://10.0.2.2:8080/tema5maven/rest/deportista/android");
+                URL url = new URL("http://10.0.2.2:8080/apirest/rest/usuario/insertar");
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();//Abrir conexion
                 con.setRequestMethod("POST");
                 con.setRequestProperty("Content-Type", "application/json");
