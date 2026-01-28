@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesion</title>
     <link rel="icon" href="../recursos/logoTransparent.png" type="image/png">
-     <style>
+    <style>
         body {
             margin: 0;
             padding: 0;
@@ -71,7 +71,6 @@
     require_once 'Header.php'
     ?>
     <form action="" <?php echo $_SERVER['PHP_SELF'] ?>"" method="post">
-        <!-- <img src="../recursos/logoTransparent.png" alt="" style="size-adjust: width;"> -->
         <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="NombreUsuario"><br><br>
         <input type="password" name="password" id="password" placeholder="Contraseña"><br><br>
         <input type="submit" value="Registrarse">

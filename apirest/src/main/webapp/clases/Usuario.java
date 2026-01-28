@@ -6,6 +6,8 @@ public class Usuario {
     private String fechaNacimiento;
     private String password;
 
+    @Path("usuario")
+//#region SET Y GET
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -47,7 +49,7 @@ public class Usuario {
     public String getPassword() {
         return password;
     }
-
+ //#endregion
     public Usuario(String nombre, String apellidos, String nombreUsuario, String email, String fechaNacimiento, String password){
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
@@ -55,6 +57,20 @@ public class Usuario {
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
         this.password = password;
+    }
+
+    @POST
+    @Path("/insertar")
+    public Response insertarUsuarioMovil(Usuario usuario){
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection(url, user, password);
+            Statement st = conexion.createStatement();
+            st.executeUpdate(String.format("INSERT INTO deportistas (nombreUsuario, nombre, apellidos, email) VALUES ('%s', '%s')", deportista.getNombre(), deportista.getDeporte()));
+            return Response.ok("Subido correctamente").build(); // Esto solo muestra json
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
+        }
     }
 }
 
