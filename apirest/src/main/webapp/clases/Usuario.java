@@ -60,7 +60,7 @@ public class Usuario {
     }
 
     @POST
-    @Path("/insertar")
+    @Path("/insertar") //ACABAR ESTO
     public Response insertarUsuarioMovil(Usuario usuario){
         try {
             Class.forName("org.mariadb.jdbc.Driver");
