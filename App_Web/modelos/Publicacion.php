@@ -4,13 +4,15 @@ Class Publicacion{
     private $idUsuario;
     private $fechaPublicacion;
     private $numLikes;
+    private $fotoPublicacion;
     private $database;
 
-    public function __construct($idUsuario, $fechaPublicacion, $numLikes){
+    public function __construct(){
         $this->publicacion = array();
-        $this->idUsuario = "";
+        $this->idUsuario = 0;
         $this->fechaPublicacion = "";
         $this->numLikes = 0;
+        $this->fotoPublicacion = "";
         $this->database =  Conexion::conexion();
     }
 
@@ -33,5 +35,12 @@ Class Publicacion{
     }
     public function getNumLikes(){
         return $this->numLikes;
+    }
+
+    public function setFotoPublicacion($fotoPublicacion){
+        $this->fotoPublicacion = $fotoPublicacion;
+    }
+    public function getFotoPublicacion(){
+        return $this->fotoPublicacion;
     }
 }
