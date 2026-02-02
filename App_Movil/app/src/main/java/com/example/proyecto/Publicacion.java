@@ -2,25 +2,27 @@ package com.example.proyecto;
 
 import android.widget.ImageView;
 
+import java.sql.Date;
+
 public class Publicacion {
-    private int nombreUsuario;
-    private String fechaPublicacion;
+    private int idUsuario;
+    private Date fechaPublicacion;
     private int numLikes;
     private int fotoPublicacion;
 
-    public void setNombreUsuario(int idUsuario) {
-        this.nombreUsuario = idUsuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public int getNombreUsuario() {
-        return nombreUsuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setFechaPublicacion(String fechaPublicacion) {
+    public void setFechaPublicacion(Date fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;
     }
 
-    public String getFechaPublicacion() {
+    public Date getFechaPublicacion() {
         return fechaPublicacion;
     }
 
@@ -39,10 +41,10 @@ public class Publicacion {
     public int getFotoPublicacion() {
         return fotoPublicacion;
     }
-    public Publicacion(int idUsuario, String fechaPublicacion, int numLikes, ImageView fotoPublicacion){
-        this.nombreUsuario = 0;
-        this.fechaPublicacion = "";
-        this.numLikes = 0;
-        this.fechaPublicacion = "";
+    public Publicacion(int idUsuario, int fotoPublicacion, int numLikes, Date fechaPublicacion){
+        this.idUsuario = idUsuario;
+        this.fotoPublicacion = fotoPublicacion;
+        this.numLikes = numLikes;
+        this.fechaPublicacion = fechaPublicacion;
     }
 }

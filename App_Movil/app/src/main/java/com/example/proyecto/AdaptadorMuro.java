@@ -1,6 +1,5 @@
 package com.example.proyecto;
 
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Publicacion pu = this.publicacion.get(position);
-        holder.getNombreUsuario().setText(pu.getNombreUsuario());
+        holder.getNombreUsuario().setText(pu.getIdUsuario());
         holder.getFotoPublicacion().setImageResource(pu.getFotoPublicacion());
         holder.getNumLikes().setText(pu.getNumLikes()+ "");
     }

@@ -1,11 +1,22 @@
 package com.example.proyecto;
 
+import android.widget.ImageView;
+
+import java.sql.Blob;
+import java.sql.Date;
+
 public class Usuario {
+    private ImageView fotoUsuario;
     private String nombre;
     private String apellidos;
     private String nombreUsuario;
-    private String password;
     private String email;
+    private Date fechaNacimiento;
+    private String password;
+
+    public void setFotoUsuario(ImageView fotoUsuario) { this.fotoUsuario = fotoUsuario; }
+
+    public ImageView getFotoUsuario() { return fotoUsuario; }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -42,11 +53,17 @@ public class Usuario {
         return password;
     }
 
-    public Usuario(String nombre, String apellidos, String nombreUsuario, String email, String password){
+    public void setFechaNacimiento(Date fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
+
+    public Date getFechaNacimiento() { return fechaNacimiento; }
+
+    public Usuario(ImageView fotoUsuario, String nombreUsuario, String nombre, String apellidos, String email, Date fechaNacimiento, String password){
+        this.fotoUsuario = fotoUsuario;
+        this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.nombreUsuario = nombreUsuario;
         this.email = email;
+        this.fechaNacimiento = fechaNacimiento;
         this.password = password;
     }
 }
