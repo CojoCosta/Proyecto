@@ -1,3 +1,5 @@
+package clases;
+
 import java.sql.Date;
 
 public class Publicacion {
@@ -7,6 +9,7 @@ public class Publicacion {
     private Date fecha_publicacion;
     private int num_likes;
 
+    @path("/publicacion")
     //#region SET Y GET
     public void setId_publicacion(int id_publicacion) {
         this.id_publicacion = id_publicacion;
@@ -46,16 +49,12 @@ public class Publicacion {
 
     //#region CONSTRUCTORES
     public Publicacion(){ }
-    public Publicacion(int idUsuario, Blob fotoUsuario, String nombre, String apellidos, String nombreUsuario, String email, Date fechaNacimiento, String password){
+    public Publicacion(int idUsuario, Blob foto_publicacion, Date fecha_publicacion, int num_likes){
         this.idUsuario = idUsuario;
-        this.fotoUsuario = 
-        this.nombreUsuario = nombreUsuario;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.email = email;
-        this.fechaNacimiento = fechaNacimiento;
-        this.password = password;
+        this.foto_publicacion = foto_publicacion;
+        this.fecha_publicacion = fecha_publicacion;
+        this.num_likes = num_likes;        
     }
 //#endregion
-
+    
 }
