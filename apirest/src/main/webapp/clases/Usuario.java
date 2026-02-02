@@ -1,4 +1,8 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 public class Usuario {
+    private int idUsuario;
     private Blob fotoUsuario;
     private String nombreUsuario;
     private String nombre;
@@ -9,6 +13,13 @@ public class Usuario {
 
     @Path("usuario")
 //#region SET Y GET
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    public int getId() {
+        return id;
+    }
+
     public void setFotoUsuario(Blob fotoUsuario){
         this.fotoUsuario = fotoUsuario;
     }
@@ -59,7 +70,10 @@ public class Usuario {
     }
  //#endregion
 
-    public Usuario(Blob fotoUsuario, String nombre, String apellidos, String nombreUsuario, String email, String fechaNacimiento, String password){
+//#region CONSTRUCTORES
+    public Usuario(){ }
+    public Usuario(int id, Blob fotoUsuario, String nombre, String apellidos, String nombreUsuario, String email, String fechaNacimiento, String password){
+        this.id = id;
         this.fotoUsuario = fotoUsuario;
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
@@ -68,6 +82,7 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
         this.password = password;
     }
+//#endregion
 
     @POST
     @Path("/insertar") //ACABAR ESTO
@@ -76,7 +91,14 @@ public class Usuario {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = DriverManager.getConnection(url, user, password);
             Statement st = conexion.createStatement();
-            st.executeUpdate(String.format("INSERT INTO deportistas (nombreUsuario, nombre, apellidos, email) VALUES ('%s', '%s')", deportista.getNombre(), deportista.getDeporte()));
+            st.executeUpdate("INSERT INTO deportistas (nombre_usuario, nombre, apellidos, email, fecha_nacimiento, password) VALUES ('?', '?', '?', '?', '?', '?')");
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setString(1, usuario.getNombreUsuario());
+            ps.setString(2, usuario.getNombre());
+            ps.setString(3, usuario.getApellidos());
+            ps.setString(4, usuario.getEmail());
+            ps.setString(5, usuario.getFechaNacimiento());
+            ps.setString(6, usuario.getPassword());
             return Response.ok("Subido correctamente").build(); // Esto solo muestra json
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
