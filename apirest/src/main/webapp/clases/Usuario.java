@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 
 public class Usuario {
@@ -8,7 +9,7 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private String email;
-    private String fechaNacimiento;
+    private Date fechaNacimiento;
     private String password;
 
     @Path("usuario")
@@ -55,7 +56,7 @@ public class Usuario {
         return email;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
     public String getFechaNacimiento() {
@@ -72,8 +73,8 @@ public class Usuario {
 
 //#region CONSTRUCTORES
     public Usuario(){ }
-    public Usuario(int id, Blob fotoUsuario, String nombre, String apellidos, String nombreUsuario, String email, String fechaNacimiento, String password){
-        this.id = id;
+    public Usuario(int idUsuario, Blob fotoUsuario, String nombre, String apellidos, String nombreUsuario, String email, Date fechaNacimiento, String password){
+        this.idUsuario = idUsuario;
         this.fotoUsuario = fotoUsuario;
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
