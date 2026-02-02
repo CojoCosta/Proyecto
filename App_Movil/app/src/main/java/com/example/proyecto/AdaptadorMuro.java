@@ -28,7 +28,7 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Publicacion pu = this.publicacion.get(position);
-        holder.getNombreUsuario().setText(pu.getIdUsuario());
+        holder.getIdUsuario().setText(pu.getIdUsuario()+ "");//VEr esto
         holder.getFotoPublicacion().setImageResource(pu.getFotoPublicacion());
         holder.getNumLikes().setText(pu.getNumLikes()+ "");
     }
@@ -38,7 +38,6 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
         return this.publicacion.size();
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        ImageView fotoPublicacion;
         TextView nombreUsuario, numLikes;
         ImageButton ibLike;
         public MyViewHolder(@NonNull View itemView) {
@@ -48,7 +47,7 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
             this.numLikes = itemView.findViewById(R.id.txtNumLikesCelda);
             this.ibLike = itemView.findViewById(R.id.ibLikeCelda);
         }
-        public ImageView getFotoPublicacion(){
+        public int getFotoPublicacion(){
             return fotoPublicacion;
         }
         public TextView getNombreUsuario() {
