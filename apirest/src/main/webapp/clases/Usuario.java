@@ -1,4 +1,5 @@
 public class Usuario {
+    private Blob fotoUsuario;
     private String nombreUsuario;
     private String nombre;
     private String apellidos;
@@ -8,6 +9,20 @@ public class Usuario {
 
     @Path("usuario")
 //#region SET Y GET
+    public void setFotoUsuario(Blob fotoUsuario){
+        this.fotoUsuario = fotoUsuario;
+    }
+    public Blob getFotoUsuario() {
+        return fotoUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -20,13 +35,6 @@ public class Usuario {
     }
     public String getApellidos() {
         return apellidos;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-    public String getNombreUsuario() {
-        return nombreUsuario;
     }
 
     public void setEmail(String email) {
@@ -50,7 +58,9 @@ public class Usuario {
         return password;
     }
  //#endregion
-    public Usuario(String nombre, String apellidos, String nombreUsuario, String email, String fechaNacimiento, String password){
+
+    public Usuario(Blob fotoUsuario, String nombre, String apellidos, String nombreUsuario, String email, String fechaNacimiento, String password){
+        this.fotoUsuario = fotoUsuario;
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
