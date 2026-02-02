@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +13,12 @@ import java.util.ArrayList;
 
 public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHolder> {
     ArrayList<Publicacion> publicacion;
-    public AdaptadorMuro (ArrayList<Publicacion> publicacion){
+    ArrayList<Usuario> usuarios;
+    Usuario usuario;
+    public AdaptadorMuro (ArrayList<Publicacion> publicacion, ArrayList<Usuario> usuarios, Usuario usuario){
         this.publicacion = publicacion;
+        this.usuarios = usuarios;
+        this.usuario = usuario;
     }
     @NonNull
     @Override
@@ -28,9 +31,19 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Publicacion pu = this.publicacion.get(position);
-        holder.getIdUsuario().setText(pu.getIdUsuario()+ "");//VEr esto
-        holder.getFotoPublicacion().setImageResource(pu.getFotoPublicacion());
-        holder.getNumLikes().setText(pu.getNumLikes()+ "");
+        for (Usuario u : usuarios) {
+            if (pu.getIdUsuario()-1 == u.getId_usuario()){
+                holder.getNombreUsuario().setText(u.getNombre_usuario());
+            }
+        }
+
+        holder.getIbLike().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.getNumLikes().setText(pu.getNumLikes()+ 1 + "");
+            }
+        });
+
     }
 
     @Override
@@ -42,13 +55,9 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
         ImageButton ibLike;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.fotoPublicacion = itemView.findViewById(R.id.fotoPublicacion);
             this.nombreUsuario = itemView.findViewById(R.id.txtUsuarioCelda);
             this.numLikes = itemView.findViewById(R.id.txtNumLikesCelda);
             this.ibLike = itemView.findViewById(R.id.ibLikeCelda);
-        }
-        public int getFotoPublicacion(){
-            return fotoPublicacion;
         }
         public TextView getNombreUsuario() {
             return nombreUsuario;
@@ -56,5 +65,10 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
         public TextView getNumLikes() {
             return numLikes;
         }
+
+        public ImageButton getIbLike() {
+            return ibLike;
+        }
+
     }
 }
