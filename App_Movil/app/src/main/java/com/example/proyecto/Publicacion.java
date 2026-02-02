@@ -47,4 +47,5 @@ public class Publicacion {
         this.numLikes = numLikes;
         this.fechaPublicacion = fechaPublicacion;
     }
+    //esta subido bien
 }
