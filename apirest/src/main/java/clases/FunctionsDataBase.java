@@ -1,3 +1,5 @@
+package clases;
+
 public class FunctionsDataBase {
     private static final String url = "jdbc:mariadb://sql.freedb.tech:3306/freedb_Proyecto";
     private static final String user = "freedb_DiegoCosta";
