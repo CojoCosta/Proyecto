@@ -1,3 +1,5 @@
+package clases;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
