@@ -64,7 +64,6 @@ public class APIREST {
     }
 
     public Usuario iniciarSesion(String nombre_usuario, String password){
-        List<Usuario> usuarios; new ArrayList<>();
         new Thread(()->{
            try {
                URL url = new URL("http://10.0.2.2:8080/apirest/rest/usuario/insertar");

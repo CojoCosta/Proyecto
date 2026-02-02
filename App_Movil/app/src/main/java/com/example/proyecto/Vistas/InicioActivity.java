@@ -13,13 +13,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.proyecto.APIREST;
 import com.example.proyecto.R;
 
 public class InicioActivity extends AppCompatActivity {
     EditText editUsuario, editPassword;
     TextView txtRegistro;
     Button btnEntrar;
-
+    APIREST apirest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,17 @@ public class InicioActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(InicioActivity.this, RegistroActivity.class);
             startActivity(intent);
+        }
+    });
+
+    btnEntrar.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (apirest.iniciarSesion(editUsuario.getText().toString(), editPassword.getText().toString()) != null){
+                Intent intent = new Intent(InicioActivity.this, PagInicioActivity.class);
+                startActivity(intent);
+            }
+
         }
     });
     }
