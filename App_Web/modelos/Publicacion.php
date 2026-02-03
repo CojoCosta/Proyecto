@@ -12,7 +12,6 @@ Class Publicacion{
         $this->idUsuario = 0;
         $this->fechaPublicacion = "";
         $this->numLikes = 0;
-        $this->fotoPublicacion = "";
         $this->database =  Conexion::conexion();
     }
 
@@ -37,10 +36,5 @@ Class Publicacion{
         return $this->numLikes;
     }
 
-    public function setFotoPublicacion($fotoPublicacion){
-        $this->fotoPublicacion = $fotoPublicacion;
-    }
-    public function getFotoPublicacion(){
-        return $this->fotoPublicacion;
-    }
+    
 }

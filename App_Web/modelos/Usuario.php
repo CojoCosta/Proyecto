@@ -1,6 +1,7 @@
 <?php
 
 Class Usuario{
+    private $path;
     private $usuario;
     private $nombre;
     private $apellidos;
@@ -11,6 +12,7 @@ Class Usuario{
     private $database;
 
     public function __construct(){
+        $this->path = "http://10.0.2.2:8080/apirest/rest/usuario/";
         $this->usuario = array();
         $this->nombre = "";
         $this->apellidos = "";
@@ -65,7 +67,7 @@ Class Usuario{
     #endregion
 
     public function setUsuario($nombre, $apellidos, $nombreUsuario, $email, $password, $fechaNacimiento){
-        $sql = "INSERT INTO usuarios (nombre, apellidos, nombreUsuario, email, password, fechaNacimiento) VALUES ('$nombre', '$apellidos', '$nombreUsuario', '$email', '$fechaNacimiento')";
+        $sql = "INSERT INTO usuarios (nombre, apellidos, nombreUsuario, email, password, fechaNacimiento) VALUES ('$nombre', '$apellidos', '$nombreUsuario', '$email', '$password', '$fechaNacimiento')";
         $result = $this->database->query($sql);
         $this -> database = null;
         return $result;
