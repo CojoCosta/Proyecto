@@ -49,8 +49,8 @@ public class Publicacion {
 
     //#region CONSTRUCTORES
     public Publicacion(){ }
-    public Publicacion(int idUsuario, Blob foto_publicacion, Date fecha_publicacion, int num_likes){
-        this.idUsuario = idUsuario;
+    public Publicacion(int id_usuario, Blob foto_publicacion, Date fecha_publicacion, int num_likes){
+        this.id_usuario = id_usuario;
         this.foto_publicacion = foto_publicacion;
         this.fecha_publicacion = fecha_publicacion;
         this.num_likes = num_likes;        

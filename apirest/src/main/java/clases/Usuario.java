@@ -5,36 +5,36 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 
 public class Usuario {
-    private int idUsuario;
-    private Blob fotoUsuario;
-    private String nombreUsuario;
+    private int id_usuario;
+    private Blob foto_usuario;
+    private String nombre_usuario;
     private String nombre;
     private String apellidos;
     private String email;
-    private Date fechaNacimiento;
+    private Date fecha_nacimiento;
     private String password;
 
     @Path("usuario")
 //#region SET Y GET
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
     public int getId() {
-        return id;
+        return id_usuario;
     }
 
     public void setFotoUsuario(Blob fotoUsuario){
-        this.fotoUsuario = fotoUsuario;
+        this.foto_usuario = foto_usuario;
     }
     public Blob getFotoUsuario() {
-        return fotoUsuario;
+        return foto_usuario;
     }
 
     public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+        this.nombre_usuario = nombre_usuario;
     }
     public String getNombreUsuario() {
-        return nombreUsuario;
+        return nombre_usuario;
     }
 
     public void setNombre(String nombre) {
@@ -59,10 +59,10 @@ public class Usuario {
     }
 
     public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+        this.fecha_nacimiento = fecha_nacimiento;
     }
     public String getFechaNacimiento() {
-        return fechaNacimiento;
+        return fecha_nacimiento;
     }
 
     public void setPassword(String password) {
