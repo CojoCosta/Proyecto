@@ -11,6 +11,7 @@ class Usuario
     private $email;
     private $password;
     private $fechaNacimiento;
+    private $database;
 
     public function __construct()
     {
@@ -22,26 +23,63 @@ class Usuario
         $this->email = "";
         $this->password = "";
         $this->fechaNacimiento = "";
+        $this->database =  Conexion::conexion();
     }
 
     #region SETTERS Y GETTERS
-    public function setNombreUsuario($nombre_usuario) { $this->nombre_usuario = $nombre_usuario; }
-    public function getNombreUsuario() { return $this->nombre_usuario; }
+    public function setNombreUsuario($nombre_usuario)
+    {
+        $this->nombre_usuario = $nombre_usuario;
+    }
+    public function getNombreUsuario()
+    {
+        return $this->nombre_usuario;
+    }
 
-    public function setNombre($nombre) { $this->nombre = $nombre; }
-    public function getNombre() { return $this->nombre; }
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
 
-    public function setApellidos($apellidos) { $this->apellidos = $apellidos; }
-    public function getApellidos() { return $this->apellidos; }
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+    }
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
 
-    public function setEmail($email) { $this->email = $email; }
-    public function getEmail() { return $this->email; }
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
-    public function setPassword($password) { $this->password = $password; }
-    public function getPassword() { return $this->password; }
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+    public function getPassword()
+    {
+        return $this->password;
+    }
 
-    public function setFechaNacimiento($fechaNacimiento) { $this->fechaNacimiento = $fechaNacimiento; }
-    public function getFechaNacimiento() { return $this->fechaNacimiento; }
+    public function setFechaNacimiento($fechaNacimiento)
+    {
+        $this->fechaNacimiento = $fechaNacimiento;
+    }
+    public function getFechaNacimiento()
+    {
+        return $this->fechaNacimiento;
+    }
     #endregion
 
     public function getUsuario()
