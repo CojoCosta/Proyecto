@@ -52,7 +52,6 @@ public class InicioActivity extends AppCompatActivity {
                 Intent intent = new Intent(InicioActivity.this, PagInicioActivity.class);
                 startActivity(intent);
             }
-
         }
     });
     }
