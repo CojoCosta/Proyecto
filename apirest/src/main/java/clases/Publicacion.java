@@ -53,8 +53,11 @@ public class Publicacion {
         this.id_usuario = id_usuario;
         this.foto_publicacion = foto_publicacion;
         this.fecha_publicacion = fecha_publicacion;
-        this.num_likes = num_likes;        
+        this.num_likes = num_likes;
     }
 //#endregion
+
+    
+
     
 }
