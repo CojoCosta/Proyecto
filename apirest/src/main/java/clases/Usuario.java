@@ -3,6 +3,7 @@ package clases;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -10,13 +11,14 @@ import javax.annotation.processing.Generated;
 
 public class Usuario {
     private int id_usuario;
-    private Blob foto_usuario;
     private String nombre_usuario;
     private String nombre;
     private String apellidos;
     private String email;
     private Date fecha_nacimiento;
     private String password;
+
+    Conexion c = new Conexion();
 
     @Path("usuario")
     // #region SET Y GET
@@ -26,14 +28,6 @@ public class Usuario {
 
     public int getId() {
         return id_usuario;
-    }
-
-    public void setFotoUsuario(Blob fotoUsuario) {
-        this.foto_usuario = foto_usuario;
-    }
-
-    public Blob getFotoUsuario() {
-        return foto_usuario;
     }
 
     public void setNombreUsuario(String nombreUsuario) {
@@ -89,10 +83,8 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, Blob fotoUsuario, String nombre, String apellidos, String nombreUsuario, String email,
-            Date fechaNacimiento, String password) {
+    public Usuario(int idUsuario, String nombre, String apellidos, String nombreUsuario, String email, Date fechaNacimiento, String password) {
         this.idUsuario = idUsuario;
-        this.fotoUsuario = fotoUsuario;
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -107,10 +99,9 @@ public class Usuario {
     public Response insertarUsuario(Usuario usuario) {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection(url, user, password);
+            Connection conexion = c.getConexion();
             Statement st = conexion.createStatement();
-            st.executeUpdate(
-                    "INSERT INTO deportistas (nombre_usuario, nombre, apellidos, email, fecha_nacimiento, password) VALUES ('?', '?', '?', '?', '?', '?')");
+            st.executeUpdate("INSERT INTO deportistas (nombre_usuario, nombre, apellidos, email, fecha_nacimiento, password) VALUES ('?', '?', '?', '?', '?', '?')");
             PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setString(1, usuario.getNombreUsuario());
             ps.setString(2, usuario.getNombre());
@@ -130,7 +121,7 @@ public class Usuario {
         Usuario usuario = null;
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection(url, user, password);
+            Connection conexion = c.getConexion();
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery("SELECT nombre_usuario, password FROM usuarios WHERE nombre_usuario LIKE '"+ nombre_usuario +"' AND password LIKE '"+ password1 +"'");
             if(rs.next()) {
@@ -148,7 +139,7 @@ public class Usuario {
         Usuario usuario = null;
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection(url, user, password);
+            Connection conexion = c.getConexion();
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery("SELECT *FROM usuarios WHERE nombre_usuario LIKE '" + nombre_usuario + "'");
             if (rs.next()) {
@@ -161,6 +152,6 @@ public class Usuario {
         }
     }
 
-    
+
 }
 
