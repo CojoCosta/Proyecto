@@ -5,21 +5,21 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Azul_Marino"
+    android:background="@color/Blanco"
     tools:context=".APIREST$InicioSesionActivity">
 
     <TextView
         android:id="@+id/nombreUsu"
         android:layout_width="225dp"
         android:layout_height="38dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:text="@string/nombreUsu"
         android:textAlignment="center"
-        android:textColor="@color/Azul_Claro"
+        android:textColor="@color/Negro"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar6" />
 
     <TextView
         android:id="@+id/pass"
@@ -28,7 +28,7 @@
         android:layout_marginTop="40dp"
         android:text="@string/contraseña"
         android:textAlignment="center"
-        android:textColor="@color/Azul_Claro"
+        android:textColor="@color/Negro"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +43,8 @@
         android:hint="@string/contraseña"
         android:inputType="text|textPassword"
         android:textAlignment="center"
-        android:textColor="@color/Blanco"
-        android:textColorHint="@color/Azul_Claro"
+        android:textColor="@color/Negro"
+        android:textColorHint="@color/Azul_Oscuro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pass" />
@@ -58,32 +58,17 @@
         android:hint="@string/usuario"
         android:inputType="text"
         android:textAlignment="center"
-        android:textColor="@color/Azul_Claro"
-        android:textColorHint="@color/Azul_Claro"
+        android:textColor="@color/Negro"
+        android:textColorHint="@color/Azul_Oscuro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreUsu" />
 
-    <TextView
-        android:id="@+id/titulo"
-        android:layout_width="370dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="91dp"
-        android:text="@string/titulo"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/Azul_Claro"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="111dp"
-        android:background="@color/Negro"
+        android:layout_width="412dp"
+        android:layout_height="96dp"
+        android:background="@color/Azul_Logo"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,9 +80,9 @@
         android:id="@+id/btn_entrar"
         android:layout_width="225dp"
         android:layout_height="61dp"
-        android:backgroundTint="@color/Blanco"
+        android:backgroundTint="@color/Azul_Logo"
         android:text="@string/entrar"
-        android:textColor="@color/Azul_Marino"
+        android:textColor="@color/Blanco"
         app:layout_constraintBottom_toTopOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,12 +96,33 @@
         android:text="@string/registrar"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/Azul_Oscuro"
+        android:textColor="@color/Blanco"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar6"
+        android:layout_width="0dp"
+        android:layout_height="84dp"
+        android:background="@color/Azul_Logo"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="99dp"
+        android:src="@drawable/logo_transparente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

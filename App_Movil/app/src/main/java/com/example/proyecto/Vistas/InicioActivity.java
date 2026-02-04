@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,10 +49,16 @@ public class InicioActivity extends AppCompatActivity {
     btnEntrar.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (apirest.iniciarSesion(editUsuario.getText().toString(), editPassword.getText().toString()) != null){
-                Intent intent = new Intent(InicioActivity.this, PagInicioActivity.class);
-                startActivity(intent);
-            }
+            apirest.inicioSesion(editUsuario.getText().toString(), editPassword.getText().toString(), success -> {
+                if (success) {
+                    Intent intent = new Intent(InicioActivity.this, PagInicioActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(InicioActivity.this, "Usuario o contraseña erróneos", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
         }
     });
     }

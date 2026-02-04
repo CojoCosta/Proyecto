@@ -32,7 +32,17 @@ import java.util.List;
 
 public class APIREST {
     String pathPrincipal = "http://10.0.2.2:8080/apirest/rest/usuario/";
-
+    //#region INTERFACES
+    public interface ApiCallback {
+        void onResult(boolean success);
+    }
+    public interface PostsCallback {
+        void onResult(ArrayList<Publicacion> posts);
+    }
+    public interface LoginCallback {
+        void onLoginResult(boolean success);
+    }
+    //#endregion
     public void anadirUsuario(String nombre, String apellidos, String nombre_usuario, String email, String password, String fecha_nacimiento){
         new Thread(()-> {
             try {
@@ -63,18 +73,35 @@ public class APIREST {
             }
         }).start();
     }
-    public interface ApiCallback {
-        void onResult(boolean success);
+
+    public void inicioSesion(String nombre_usuario, String password, LoginCallback callback) {
+        new Thread(() -> {
+            try {
+                URL url = new URL(pathPrincipal + "inicioSesion/{"+nombre_usuario+"}/{"+password+"}");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("Accept", "application/json");
+
+                int code = conn.getResponseCode();
+                System.out.println("Código HTTP: " + code);
+
+                if (code == 200) {
+                    callback.onLoginResult(true);
+                } else {
+                    callback.onLoginResult(false);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                callback.onLoginResult(false);
+            }
+        }).start();
     }
 
-    public interface PostsCallback {
-        void onResult(ArrayList<Publicacion> posts);
-    }
-    public void inicioSesion(String nombreUsuario, String password, ApiCallback callback){
+    public void obtenerDatosUsuario(String nombreUsuario, ApiCallback callback){
         new Thread(()->{
-            HttpURLConnection conexion;
+            HttpURLConnection conexion = null;
             try {
-                URL url = new URL(pathPrincipal + "insertar");
+                URL url = new URL(pathPrincipal + "/datosUsuario/{nombre_usuario}");
                 conexion = (HttpURLConnection) url.openConnection();//Abrir conexion
                 conexion.setRequestMethod("GET");
                 conexion.setRequestProperty("Accept", "application/json");
@@ -87,9 +114,6 @@ public class APIREST {
                     conexion.disconnect();
                 }
             }
-
-
-
         });
     }
 
