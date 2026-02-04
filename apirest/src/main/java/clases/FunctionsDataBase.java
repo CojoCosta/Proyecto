@@ -37,16 +37,4 @@ public class FunctionsDataBase {
         }
     }
 
-    @Generated
-    @Path("/inicioSesion")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response inicioSesion(Usuario usuario){
-        Class.forName("org.mariadb.jdbc.Driver");
-            Connection conexion = DriverManager.getConnection(url, user, password);
-            Statement st = conexion.createStatement();
-            st.executeUpdate("Select nombre_usuario, password FROM usuarios WHERE nombre_usuario LIKE '?' AND password LIKE '?'");
-            PreparedStatement ps = conexion.prepareStatement(sql);
-            ps.setString(1, usuario.getNombreUsuario());
-
-    }
 }
