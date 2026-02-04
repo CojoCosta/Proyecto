@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.annotation.processing.Generated;
 
@@ -83,8 +84,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellidos, String nombreUsuario, String email, Date fechaNacimiento, String password) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nombre, String apellidos, String nombreUsuario, String email, Date fechaNacimiento, String password) {
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
