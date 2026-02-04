@@ -1,8 +1,10 @@
 package clases;
 
+import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class Usuario {
     private int id_usuario;
@@ -89,7 +91,7 @@ public class Usuario {
 
     @POST
     @Path("/insertar") //ACABAR ESTO
-    public Response insertarUsuarioMovil(Usuario usuario){
+    public Response insertarUsuario(Usuario usuario){
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = DriverManager.getConnection(url, user, password);
@@ -103,6 +105,24 @@ public class Usuario {
             ps.setString(5, usuario.getFechaNacimiento());
             ps.setString(6, usuario.getPassword());
             return Response.ok("Subido correctamente").build(); // Esto solo muestra json
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
+        }
+    }
+
+    @GET
+    @Path("/inicioSesion/{nombre_usuario}/{password}")
+    public Response obtenerDatosUsuario(@PathParam("nombre_usuario") String nombre_usuario @PathParam("password") String password1){
+        Usuario usuario = null;
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection(url, user, password);
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery("SELECT nombre_usuario, password FROM usuarios WHERE nombre_usuario LIKE '"+ nombre_usuario +"' AND password LIKE '"+ password1 +"'");
+            if(rs.next()) {
+                usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("password"));
+            }
+            return Response.ok(usuario).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
         }
