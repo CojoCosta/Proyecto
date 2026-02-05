@@ -133,23 +133,23 @@ public class Usuario {
         }
     }
 
-    @GET
-    @Path("/perfil/{nombre_usuario}")
-    public Response datosParaPerfil(@PathParam("nombre_usuario") String nombre_usuario) {
-        Usuario usuario = null;
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            Connection conexion = c.getConexion();
-            Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery("SELECT *FROM usuarios WHERE nombre_usuario LIKE '" + nombre_usuario + "'");
-            if (rs.next()) {
-                usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),
-                        rs.getString("email"), rs.getDate("fecha_nacimiento"), rs.getString("password"));
-            }
-            return Response.ok(usuario).build();
-        } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
-        }
+    // @GET
+    // @Path("/perfil/{nombre_usuario}")
+    // public Response datosParaPerfil(@PathParam("nombre_usuario") String nombre_usuario) {
+    //     Usuario usuario = null;
+    //     try {
+    //         Class.forName("org.mariadb.jdbc.Driver");
+    //         Connection conexion = c.getConexion();
+    //         Statement st = conexion.createStatement();
+    //         ResultSet rs = st.executeQuery("SELECT *FROM usuarios WHERE nombre_usuario LIKE '" + nombre_usuario + "'");
+    //         if (rs.next()) {
+    //             usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),
+    //                     rs.getString("email"), rs.getDate("fecha_nacimiento"), rs.getString("password"));
+    //         }
+    //         return Response.ok(usuario).build();
+    //     } catch (Exception e) {
+    //         return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
+    //     }
     }
 
 
