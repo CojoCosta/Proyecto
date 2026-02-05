@@ -11,4 +11,5 @@
     <string name="Apellidos">Apelidos</string>
     <string name="Telefono">Teléfono</string>
     <string name="Fecha">Data de nac.</string>
+    <string name="Editar">Editar perfil</string>
 </resources>

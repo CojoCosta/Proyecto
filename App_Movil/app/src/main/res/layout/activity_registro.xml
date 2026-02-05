@@ -11,7 +11,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="413dp"
-        android:layout_height="79dp"
+        android:layout_height="80dp"
         android:background="@color/Azul_Logo"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -170,9 +170,9 @@
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
+        android:id="@+id/tbRegistro"
         android:layout_width="0dp"
-        android:layout_height="84dp"
+        android:layout_height="80dp"
         android:background="@color/Azul_Logo"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -192,7 +192,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+        app:layout_constraintTop_toBottomOf="@+id/tbRegistro" />
 
     <Button
         android:id="@+id/btnRegistrar"

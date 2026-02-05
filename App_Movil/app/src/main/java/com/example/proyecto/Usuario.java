@@ -6,7 +6,6 @@ import java.sql.Date;
 
 public class Usuario {
     private int id_usuario;
-    private ImageView foto_usuario;
     private String nombre;
     private String apellidos;
     private String nombre_usuario;
@@ -17,10 +16,6 @@ public class Usuario {
     public void setId_usuario(int id_usuario) { this.id_usuario = id_usuario; }
 
     public int getId_usuario() { return id_usuario; }
-
-    public void setFoto_usuario(ImageView foto_usuario) { this.foto_usuario = foto_usuario; }
-
-    public ImageView getFoto_usuario() { return foto_usuario; }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -61,8 +56,7 @@ public class Usuario {
 
     public Date getFecha_nacimiento() { return fecha_nacimiento; }
 
-    public Usuario(ImageView fotoUsuario, String nombreUsuario, String nombre, String apellidos, String email, Date fechaNacimiento, String password){
-        this.foto_usuario = fotoUsuario;
+    public Usuario( String nombreUsuario, String nombre, String apellidos, String email, Date fechaNacimiento, String password){
         this.nombre_usuario = nombreUsuario;
         this.nombre = nombre;
         this.apellidos = apellidos;

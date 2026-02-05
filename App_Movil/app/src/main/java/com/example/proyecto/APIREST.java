@@ -1,33 +1,15 @@
 package com.example.proyecto;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.example.proyecto.Vistas.RegistroActivity;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class APIREST {
@@ -40,7 +22,7 @@ public class APIREST {
         void onResult(ArrayList<Publicacion> posts);
     }
     public interface LoginCallback {
-        void onLoginResult(boolean success);
+        void onLoginResult(boolean success, Usuario u);
     }
     //#endregion
     public void anadirUsuario(String nombre, String apellidos, String nombre_usuario, String email, String password, String fecha_nacimiento){
@@ -73,11 +55,11 @@ public class APIREST {
             }
         }).start();
     }
-
+    Usuario usuario = null;
     public void inicioSesion(String nombre_usuario, String password, LoginCallback callback) {
         new Thread(() -> {
             try {
-                URL url = new URL(pathPrincipal + "inicioSesion/{"+nombre_usuario+"}/{"+password+"}");
+                URL url = new URL(pathPrincipal + "inicioSesion/"+nombre_usuario+"/"+password);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("Accept", "application/json");
@@ -86,13 +68,13 @@ public class APIREST {
                 System.out.println("Código HTTP: " + code);
 
                 if (code == 200) {
-                    callback.onLoginResult(true);
+                    callback.onLoginResult(true, usuario);
                 } else {
-                    callback.onLoginResult(false);
+                    callback.onLoginResult(false, null);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                callback.onLoginResult(false);
+                callback.onLoginResult(false , null);
             }
         }).start();
     }

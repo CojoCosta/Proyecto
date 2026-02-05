@@ -13,13 +13,16 @@
         android:theme="@style/Theme.Proyecto"
         tools:targetApi="31">
         <activity
+            android:name=".Vistas.PerfilUsuarioActivity"
+            android:exported="false" />
+        <activity
             android:name=".Vistas.PagInicioActivity"
             android:exported="false" />
         <activity
             android:name=".Vistas.RegistroActivity"
             android:exported="false" />
         <activity
-            android:name=".APIREST$InicioSesionActivity"
+            android:name=".Vistas.InicioActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

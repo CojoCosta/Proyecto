@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">Proyecto</string>
-    <string name="titulo">Bienvenido</string>
+    <string name="Bienvenido">Bienvenido</string>
     <string name="nombreUsu">Nombre de usuario</string>
     <string name="usuario">Usuario</string>
     <string name="contraseña">Contraseña</string>
@@ -13,5 +13,7 @@
     <string name="Telefono">Teléfono</string>
     <string name="Fecha">Fecha de nac.</string>
     <string name="Apellidos">Apellidos</string>
+    <string name="titulo">Bienvenido</string>
+    <string name="Editar">Editar perfil</string>
 
 </resources>

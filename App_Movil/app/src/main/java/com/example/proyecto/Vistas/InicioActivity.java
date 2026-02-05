@@ -2,6 +2,7 @@ package com.example.proyecto.Vistas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -22,6 +24,7 @@ public class InicioActivity extends AppCompatActivity {
     TextView txtRegistro;
     Button btnEntrar;
     APIREST apirest;
+    ActionBar ab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class InicioActivity extends AppCompatActivity {
     editPassword = findViewById(R.id.edit_password);
     btnEntrar = findViewById(R.id.btn_entrar);
     txtRegistro = findViewById(R.id.txt_registrar);
+    getWindow().setNavigationBarColor(getColor(R.color.Azul_Logo));
+    getWindow().setStatusBarColor(getColor(R.color.Azul_Logo));
 
     txtRegistro.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -49,9 +54,10 @@ public class InicioActivity extends AppCompatActivity {
     btnEntrar.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            apirest.inicioSesion(editUsuario.getText().toString(), editPassword.getText().toString(), success -> {
+            apirest.inicioSesion(editUsuario.getText().toString(), editPassword.getText().toString(), (success, usuario) -> {
                 if (success) {
                     Intent intent = new Intent(InicioActivity.this, PagInicioActivity.class);
+                    intent.putExtra("usuario", (Parcelable) usuario);
                     startActivity(intent);
                 } else {
                     Toast.makeText(InicioActivity.this, "Usuario o contraseña erróneos", Toast.LENGTH_SHORT).show();

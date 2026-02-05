@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
@@ -37,6 +36,8 @@ public class RegistroActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        getWindow().setNavigationBarColor(getColor(R.color.Azul_Logo));
+        getWindow().setStatusBarColor(getColor(R.color.Azul_Logo));
         editNombre = findViewById(R.id.editNombreReg);
         editApellidos = findViewById(R.id.editApellidosReg);
         editUsuario = findViewById(R.id.editUsuarioReg);
@@ -45,7 +46,10 @@ public class RegistroActivity extends AppCompatActivity {
         editFecha = findViewById(R.id.editFechaReg);
         tenerCuenta = findViewById(R.id.tenerCuentaReg);
         btnRegistrar = findViewById(R.id.btnRegistrar);
-        apirest = new APIREST();
+
+
+
+
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
