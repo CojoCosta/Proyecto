@@ -123,9 +123,9 @@ public class Usuario {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = c.getConexion();
             Statement st = conexion.createStatement();
-            ResultSet rs = st.executeQuery("SELECT nombre_usuario, password FROM usuarios WHERE nombre_usuario LIKE '"+ nombre_usuario +"' AND password LIKE '"+ password1 +"'");
+            ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE nombre_usuario LIKE '"+ nombre_usuario +"' AND password LIKE '"+ password1 +"'");
             if(rs.next()) {
-                usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("password"));
+                usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("email"), rs.getDate("fecha_nacimiento"),rs.getString("password"));
             }
             return Response.ok(usuario).build();
         } catch (Exception e) {
