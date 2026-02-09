@@ -2,9 +2,10 @@ package com.example.proyecto;
 
 import android.widget.ImageView;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Usuario {
+public class Usuario implements Serializable {
     private int id_usuario;
     private String nombre;
     private String apellidos;

@@ -22,6 +22,7 @@ import com.example.proyecto.Usuario;
 public class PerfilUsuarioActivity extends AppCompatActivity {
 Usuario usuario;
 APIREST apirest;
+Intent intentUsuario;
 Toolbar tb;
 ActionBar ab;
 TextView nombre, apellidos,nombre_usuario, descripcion;
@@ -39,18 +40,20 @@ Button editarPerfil;
             nombre_usuario = findViewById(R.id.txtNombreUsuarioP);
             descripcion = findViewById(R.id.txtDescripcion);
             editarPerfil = findViewById(R.id.btnEditar);
-            tb = findViewById(R.id.tbPagInicio);
+            tb = findViewById(R.id.tbEditar);
             setSupportActionBar(tb);
             ab = getSupportActionBar();
             getWindow().setNavigationBarColor(getColor(R.color.Azul_Logo));
             getWindow().setStatusBarColor(getColor(R.color.Azul_Logo));
-//            editarPerfil.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(PerfilUsuarioActivity.this, ModificarPerfilActivity.class);
-//
-//                }
-//            });
+            editarPerfil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(PerfilUsuarioActivity.this, ModificarActivity.class);
+
+                }
+            });
+
+
             return insets;
         });
     }

@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vistas.PagInicioActivity">
+    tools:context=".Vistas.MuroActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbPagInicio"
+        android:id="@+id/tbEditar"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/Azul_Logo"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbPagInicio" />
+        app:layout_constraintTop_toBottomOf="@+id/tbEditar" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -39,12 +39,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="93dp"
+        android:id="@+id/logoEditar"
+        android:layout_width="411dp"
+        android:layout_height="80dp"
         app:layout_constraintEnd_toEndOf="@+id/recyclerView"
         app:layout_constraintStart_toStartOf="@+id/recyclerView"
-        app:layout_constraintTop_toTopOf="@+id/tbPagInicio"
+        app:layout_constraintTop_toTopOf="@+id/tbEditar"
         app:srcCompat="@drawable/logo_transparente" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

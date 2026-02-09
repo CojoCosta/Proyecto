@@ -56,8 +56,8 @@ public class InicioActivity extends AppCompatActivity {
         public void onClick(View v) {
             apirest.inicioSesion(editUsuario.getText().toString(), editPassword.getText().toString(), (success, usuario) -> {
                 if (success) {
-                    Intent intent = new Intent(InicioActivity.this, PagInicioActivity.class);
-                    intent.putExtra("usuario", (Parcelable) usuario);
+                    Intent intent = new Intent(InicioActivity.this, MuroActivity.class);
+                    intent.putExtra("usuario", usuario);
                     startActivity(intent);
                 } else {
                     Toast.makeText(InicioActivity.this, "Usuario o contraseña erróneos", Toast.LENGTH_SHORT).show();
