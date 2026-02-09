@@ -91,7 +91,6 @@ _Leash_ es una aplicación multiplataforma (web, móvil y escritorio) orientada 
 #### App Móvil
 - Creación de las vistas y sus respectivos loyouts:
   - PerfilUsuarioActivity.java
-  - ModificarUsuarioActivity.java
 ---
 ## Tecnologías utilizadas
 - Aplicación web: PHP, HTML, CSS
@@ -100,6 +99,11 @@ _Leash_ es una aplicación multiplataforma (web, móvil y escritorio) orientada 
 - Backend: API REST
 - Idiomas: Gallego, Inglés y Castellano
 ---
+
+### 2ª Semana de febrero
+#### App Móvil
+- Creación de las vistas y sus respectivos loyouts:
+  - ModificarUsuarioActivity.java
 
 ## Autor
 Diego Costa Pereira
