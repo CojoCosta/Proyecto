@@ -32,10 +32,10 @@ public class Usuario implements Serializable {
         return apellidos;
     }
 
-    public void setNombre_usuario(String nombre_usuario) {
+    public void setNombreUsuario(String nombre_usuario) {
         this.nombre_usuario = nombre_usuario;
     }
-    public String getNombre_usuario() {
+    public String getNombreUsuario() {
         return nombre_usuario;
     }
 

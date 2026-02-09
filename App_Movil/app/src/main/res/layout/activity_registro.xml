@@ -5,13 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Azul_Marino"
+    android:background="@color/Blanco"
     tools:context=".Vistas.RegistroActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="413dp"
-        android:layout_height="80dp"
+        android:layout_height="40dp"
         android:background="@color/Azul_Logo"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -22,8 +22,8 @@
 
     <TextView
         android:id="@+id/tenerCuentaReg"
-        android:layout_width="66dp"
-        android:layout_height="48dp"
+        android:layout_width="102dp"
+        android:layout_height="53dp"
         android:drawableBottom="@drawable/home"
         android:textAlignment="center"
         android:textColor="@color/Azul_Oscuro"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/editNombreReg"
+        android:id="@+id/editNombreEd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
 
     <EditText
-        android:id="@+id/editApellidosReg"
+        android:id="@+id/editApellidosEd"
         android:layout_width="210dp"
         android:layout_height="45dp"
         android:layout_marginEnd="50dp"
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtApellidos" />
 
     <EditText
-        android:id="@+id/editUsuarioReg"
+        android:id="@+id/editUsuarioEd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
@@ -128,7 +128,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
     <EditText
-        android:id="@+id/editEmailReg"
+        android:id="@+id/editEmailEd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
@@ -155,7 +155,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
     <EditText
-        android:id="@+id/editPasswordReg"
+        android:id="@+id/editPasswordEd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="50dp"
@@ -177,6 +177,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -228,18 +229,19 @@
         android:inputType="datetime|date"
         android:textColor="@color/Negro"
         android:textColorHint="@color/Azul_Oscuro"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3"
-        android:textSize="18sp" />
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageView6"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        android:src="@drawable/logo3"
+        app:layout_constraintBottom_toBottomOf="@+id/tbRegistro"
+        app:layout_constraintEnd_toEndOf="@+id/tbRegistro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_transparente" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

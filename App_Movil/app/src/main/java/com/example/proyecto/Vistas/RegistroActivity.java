@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -25,6 +26,7 @@ public class RegistroActivity extends AppCompatActivity {
     TextView tenerCuenta;
     Button btnRegistrar;
     APIREST apirest;
+    Toolbar tbRegistro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +40,15 @@ public class RegistroActivity extends AppCompatActivity {
         });
         getWindow().setNavigationBarColor(getColor(R.color.Azul_Logo));
         getWindow().setStatusBarColor(getColor(R.color.Azul_Logo));
-        editNombre = findViewById(R.id.editNombreReg);
-        editApellidos = findViewById(R.id.editApellidosReg);
-        editUsuario = findViewById(R.id.editUsuarioReg);
-        editEmail = findViewById(R.id.editEmailReg);
-        editPassword = findViewById(R.id.editPasswordReg);
+        editNombre = findViewById(R.id.editNombreEd);
+        editApellidos = findViewById(R.id.editApellidosEd);
+        editUsuario = findViewById(R.id.editUsuarioEd);
+        editEmail = findViewById(R.id.editEmailEd);
+        editPassword = findViewById(R.id.editPasswordEd);
         editFecha = findViewById(R.id.editFechaReg);
         tenerCuenta = findViewById(R.id.tenerCuentaReg);
         btnRegistrar = findViewById(R.id.btnRegistrar);
+        tbRegistro = findViewById(R.id.tbRegistro);
 
 
 

@@ -19,16 +19,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- LOGO -->
-    <ImageView
-        android:id="@+id/logoEditar"
-        android:layout_width="409dp"
-        android:layout_height="80dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/logo_transparente"
-        app:layout_constraintBottom_toBottomOf="@id/tbPerfil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tbPerfil" />
 
     <!-- FOTO PERFIL CIRCULAR -->
 
@@ -36,8 +26,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView5"
-        android:layout_width="148dp"
-        android:layout_height="150dp"
+        android:layout_width="181dp"
+        android:layout_height="175dp"
         android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
         android:src="@drawable/foto"
@@ -45,9 +35,18 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbPerfil"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Material3.Corner.Full"
         app:strokeColor="@color/Blanco"
         app:strokeWidth="4dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/logo3"
+        app:layout_constraintBottom_toBottomOf="@+id/tbPerfil"
+        app:layout_constraintEnd_toEndOf="@+id/tbPerfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -56,10 +55,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="20dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnEditar"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView5">
@@ -124,28 +122,10 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="40dp"
         android:background="@color/Azul_Logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnEditar"
-        android:layout_width="0dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/Azul_Logo"
-        android:text="@string/Editar"
-        android:textAllCaps="false"
-        android:textColor="@color/Blanco"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

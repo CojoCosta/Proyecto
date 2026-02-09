@@ -8,8 +8,22 @@
     tools:context=".Vistas.ModificarActivity">
 
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/Editar"
+        android:textAlignment="center"
+        android:textColor="@color/Negro"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbMuro" />
+
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbEditar"
+        android:id="@+id/tbMuro"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/Azul_Logo"
@@ -20,12 +34,180 @@
         app:layout_constraintTop_toTopOf="parent"
         app:maxButtonHeight="70dp" />
 
-    <ImageView
-        android:id="@+id/logoEditar"
+    <TextView
+        android:id="@+id/txtnombre"
+        android:layout_width="73dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/Nombre"
+        android:textColor="@color/Negro"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/editNombreEd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:hint="@string/Nombre"
+        android:inputType="text"
+        android:textColor="@color/Negro"
+        android:textColorHint="@color/Azul_Oscuro"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtnombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtnombre" />
+
+    <TextView
+        android:id="@+id/txtApellidos"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/Apellidos"
+        android:textColor="@color/Negro"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
+
+    <EditText
+        android:id="@+id/editApellidosEd"
+        android:layout_width="210dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:hint="@string/Apellidos"
+        android:inputType="text"
+        android:textColor="@color/Negro"
+        android:textColorHint="@color/Azul_Oscuro"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtApellidos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtApellidos" />
+
+    <TextView
+        android:id="@+id/txtUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/usuario"
+        android:textColor="@color/Negro"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtApellidos" />
+
+    <EditText
+        android:id="@+id/editUsuarioEd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:hint="@string/nombreUsu"
+        android:inputType="text"
+        android:textColor="@color/Negro"
+        android:textColorHint="@color/Azul_Oscuro"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtUsuario" />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/Email"
+        android:textColor="@color/Negro"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
+
+    <EditText
+        android:id="@+id/editEmailEd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:hint="@string/Email"
+        android:inputType="text|textEmailAddress"
+        android:textColor="@color/Negro"
+        android:textColorHint="@color/Azul_Oscuro"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtEmail" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/contraseña"
+        android:textColor="@color/Negro"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+    <EditText
+        android:id="@+id/editPasswordEd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:hint="@string/contraseña"
+        android:inputType="text|textPassword"
+        android:textColor="@color/Negro"
+        android:textColorHint="@color/Azul_Oscuro"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="40dp"
+        android:background="@color/Azul_Logo"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/volverPerfil"
+        android:layout_width="35dp"
+        android:layout_height="36dp"
+        android:drawableBottom="@drawable/perfil"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar3"
+        app:layout_constraintStart_toStartOf="@+id/toolbar3"
+        app:layout_constraintTop_toTopOf="@+id/toolbar3" />
+
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Editar"
+        app:layout_constraintBottom_toTopOf="@+id/toolbar3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tbEditar"
-        app:srcCompat="@drawable/logo_transparente" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/logo3"
+        app:layout_constraintBottom_toBottomOf="@+id/tbMuro"
+        app:layout_constraintEnd_toEndOf="@+id/tbMuro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

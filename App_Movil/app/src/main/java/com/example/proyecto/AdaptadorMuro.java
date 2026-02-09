@@ -33,7 +33,7 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
         Publicacion pu = this.publicacion.get(position);
         for (Usuario u : usuarios) {
             if (pu.getIdUsuario()-1 == u.getId_usuario()){
-                holder.getNombreUsuario().setText(u.getNombre_usuario());
+                holder.getNombreUsuario().setText(u.getNombreUsuario());
             }
         }
 

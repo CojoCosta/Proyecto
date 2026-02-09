@@ -2,7 +2,6 @@ package com.example.proyecto.Vistas;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,7 +21,6 @@ import com.example.proyecto.Usuario;
 public class PerfilUsuarioActivity extends AppCompatActivity {
 Usuario usuario;
 APIREST apirest;
-Intent intentUsuario;
 Toolbar tb;
 ActionBar ab;
 TextView nombre, apellidos,nombre_usuario, descripcion;
@@ -40,16 +38,18 @@ Button editarPerfil;
             nombre_usuario = findViewById(R.id.txtNombreUsuarioP);
             descripcion = findViewById(R.id.txtDescripcion);
             editarPerfil = findViewById(R.id.btnEditar);
-            tb = findViewById(R.id.tbEditar);
+            tb = findViewById(R.id.tbMuro);
             setSupportActionBar(tb);
             ab = getSupportActionBar();
             getWindow().setNavigationBarColor(getColor(R.color.Azul_Logo));
             getWindow().setStatusBarColor(getColor(R.color.Azul_Logo));
+
             editarPerfil.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PerfilUsuarioActivity.this, ModificarActivity.class);
-
+                    intent.putExtra("usuarioPerfil", usuario);
+                    startActivity(intent);
                 }
             });
 
@@ -57,13 +57,13 @@ Button editarPerfil;
             return insets;
         });
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                onBackPressed();
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }
