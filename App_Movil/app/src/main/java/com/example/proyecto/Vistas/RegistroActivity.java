@@ -56,7 +56,8 @@ public class RegistroActivity extends AppCompatActivity {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apirest.anadirUsuario(editNombre.getText().toString(), editApellidos.getText().toString(), editUsuario.getText().toString(), editEmail.getText().toString(), editPassword.getText().toString(), editFecha.getText().toString());
+                apirest.anadirUsuario(editNombre.getText().toString(), editApellidos.getText().toString(), editUsuario.getText().toString(),
+                        editEmail.getText().toString(), editPassword.getText().toString(), editFecha.getText().toString());
             }
         });
         tenerCuenta.setOnClickListener(new View.OnClickListener() {

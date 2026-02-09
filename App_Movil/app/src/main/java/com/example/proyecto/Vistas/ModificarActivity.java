@@ -35,6 +35,7 @@ public class ModificarActivity extends AppCompatActivity {
             password = findViewById(R.id.editPasswordEd);
             editar = findViewById(R.id.btnEditar);
             volverPerfil = findViewById(R.id.volverPerfil);
+
             Intent intent = getIntent();
             usuarioPrincipal = (Usuario) intent.getSerializableExtra("usuarioPerfil");
             nombre_usuario.setText(usuarioPrincipal.getNombreUsuario());
