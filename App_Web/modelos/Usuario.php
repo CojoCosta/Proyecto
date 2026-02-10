@@ -15,7 +15,7 @@ class Usuario
 
     public function __construct()
     {
-        $this->path = "http://10.0.2.2:8080/apirest/rest/usuario";
+        $this->path = "http://10.0.2.2:8080/apirest/rest/usuarios";
         $this->request = new Request($this->path);
         $this->nombre_usuario = "";
         $this->nombre = "";
