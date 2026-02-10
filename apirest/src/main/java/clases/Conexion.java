@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-    private static final String url = "jdbc:mariadb://sql.freedb.tech:3306/freedb_Proyecto";
-    private static final String user = "freedb_DiegoCosta";
-    private static final String password = "2?#T#@qg5S&2sEr";
-    private Connection conexion;
+    static final String url = "jdbc:mariadb://sql.freedb.tech:3306/freedb_Proyecto";
+     static final String user = "freedb_DiegoCosta";
+    static final String password = "2?#T#@qg5S&2sEr";
+    Connection conexion;
 
     public Conexion() {
         try {

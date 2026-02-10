@@ -26,7 +26,7 @@ public class Usuario {
     private Date fecha_nacimiento;
     private String password;
     
-    Conexion c = new Conexion();
+   
 
     // #region SET Y GET
     public void setIdUsuario(int id_usuario) {
