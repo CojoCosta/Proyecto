@@ -13,7 +13,8 @@ import java.util.ArrayList;
 
 
 public class APIREST {
-    String pathPrincipal = "http://10.0.2.2:8080/apirest/rest/usuario/";
+    String pathUsuarios = "http://10.0.2.2:8080/apirest/rest/usuarios/";
+    String pathPublicaciones = "http://10.0.2.2:8080/apirest/rest/publicaciones/";
     //#region INTERFACES
     public interface ApiCallback {
         void onResult(boolean success);
@@ -29,7 +30,7 @@ public class APIREST {
         new Thread(()-> {
             try {
                 //cambiar ip por 192.130.0.13 si no funciona en el emulador
-                URL url = new URL(pathPrincipal + "insertar");
+                URL url = new URL(pathUsuarios);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();//Abrir conexion
                 con.setRequestMethod("POST");
                 con.setRequestProperty("Content-Type", "application/json");
@@ -59,7 +60,7 @@ public class APIREST {
     public void inicioSesion(String nombre_usuario, String password, LoginCallback callback) {
         new Thread(() -> {
             try {
-                URL url = new URL(pathPrincipal + "inicioSesion/"+nombre_usuario+"/"+password);
+                URL url = new URL(pathUsuarios + "inicioSesion/"+nombre_usuario+"/"+password);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("Accept", "application/json");
@@ -83,7 +84,7 @@ public class APIREST {
         new Thread(()->{
             HttpURLConnection conexion = null;
             try {
-                URL url = new URL(pathPrincipal + "/datosUsuario/{nombre_usuario}");
+                URL url = new URL(pathUsuarios + "/datosUsuario/{nombre_usuario}");
                 conexion = (HttpURLConnection) url.openConnection();//Abrir conexion
                 conexion.setRequestMethod("GET");
                 conexion.setRequestProperty("Accept", "application/json");

@@ -44,6 +44,7 @@ public class ModificarActivity extends AppCompatActivity {
             email.setText(usuarioPrincipal.getEmail());
             password.setText(usuarioPrincipal.getPassword());
 
+
             return insets;
         });
     }
