@@ -1,12 +1,16 @@
 package clases;
 
-import java.beans.Statement;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.ArrayList;
 
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.Response;
+
+@Path("/publicacion")
 public class Publicacion {
     private int id_publicacion;
     private int id_usuario;
@@ -14,6 +18,7 @@ public class Publicacion {
     private Date fecha_publicacion;
     private int num_likes;
     ArrayList<Publicacion> publicaciones = new ArrayList<>();
+    Conexion c = new Conexion();
     // #region SET Y GET
     public void setId_publicacion(int id_publicacion) {
         this.id_publicacion = id_publicacion;
@@ -67,23 +72,19 @@ public class Publicacion {
 
     // #endregion
     
-    @path("/publicacion")
-    
     @POST
     @Path("/publicar")
     public Response subirPublicacion(Publicacion publicacion){
-        Publicacion publicacion = null;
+        Publicacion publicacion2 = null;
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = c.getConexion();
-            Statement st = conexion.createStatement();
-            st.executeQuery("INSERT INTO publicaciones (nombre_usuario, fecha_publicacion, num_likes) VALUES ('?', '?', '?')");
-            PreparedStatement ps = conexion.prepareStatement(sql)
+            PreparedStatement ps = conexion.prepareStatement("INSERT INTO publicaciones (nombre_usuario, fecha_publicacion, num_likes) VALUES ('?', '?', '?')");
             ps.setString(2, publicacion.getNombre_usuario());
             ps.setDate(3, publicacion.getFecha_publicacion());
             ps.setInt(4, publicacion.getNum_likes());
-            publicacion = new Publicacion(publicacion.getNombre_usuario(), publicacion.getFecha_publicacion(), publicacion.getNum_likes());
-            publicaciones.add(publicacion);
+            publicacion2 = new Publicacion(publicacion.getNombre_usuario(), publicacion.getFecha_publicacion(), publicacion.getNum_likes());
+            publicaciones.add(publicacion2);
             return Response.ok("Subido correctamente").build(); 
         }catch (Exception e){
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();

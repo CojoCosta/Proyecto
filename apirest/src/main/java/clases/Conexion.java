@@ -12,7 +12,7 @@ public class Conexion {
 
     public Conexion() {
         try {
-            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
+            conexion = DriverManager.getConnection(url, user, password);
             System.out.println("Conexión exitosa a la base de datos");
         } catch (SQLException e) {
             System.out.println("Error al conectar con la base de datos");
