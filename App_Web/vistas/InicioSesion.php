@@ -71,9 +71,9 @@
     require_once 'Header.php'
     ?>
     <form action="" <?php echo $_SERVER['PHP_SELF'] ?>"" method="post">
-        <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="NombreUsuario"><br><br>
+        <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre Usuario"><br><br>
         <input type="password" name="password" id="password" placeholder="Contraseña"><br><br>
-        <input type="submit" value="Registrarse">
+        <input type="submit" value="Iniciar Sesión">
     </form>
     <?php
     require_once 'Bottom.php'

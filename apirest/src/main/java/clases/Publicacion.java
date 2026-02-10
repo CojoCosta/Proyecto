@@ -6,11 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
 
-@Path("/publicacion")
+@Path("/publicaciones")
 public class Publicacion {
     private int id_publicacion;
     private int id_usuario;
@@ -19,6 +20,7 @@ public class Publicacion {
     private int num_likes;
     ArrayList<Publicacion> publicaciones = new ArrayList<>();
     Conexion c = new Conexion();
+
     // #region SET Y GET
     public void setId_publicacion(int id_publicacion) {
         this.id_publicacion = id_publicacion;
@@ -36,10 +38,11 @@ public class Publicacion {
         return id_usuario;
     }
 
-    public void setNombre_usuario(String nombre_usuario){
+    public void setNombre_usuario(String nombre_usuario) {
         this.nombre_usuario = nombre_usuario;
     }
-    public String getNombre_usuario(){
+
+    public String getNombre_usuario() {
         return nombre_usuario;
     }
 
@@ -71,24 +74,25 @@ public class Publicacion {
     }
 
     // #endregion
-    
+
     @POST
-    @Path("/publicar")
-    public Response subirPublicacion(Publicacion publicacion){
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response subirPublicacion(Publicacion publicacion) {
         Publicacion publicacion2 = null;
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = c.getConexion();
-            PreparedStatement ps = conexion.prepareStatement("INSERT INTO publicaciones (nombre_usuario, fecha_publicacion, num_likes) VALUES ('?', '?', '?')");
+            PreparedStatement ps = conexion.prepareStatement(
+                    "INSERT INTO publicaciones (nombre_usuario, fecha_publicacion, num_likes) VALUES ('?', '?', '?')");
             ps.setString(2, publicacion.getNombre_usuario());
             ps.setDate(3, publicacion.getFecha_publicacion());
             ps.setInt(4, publicacion.getNum_likes());
-            publicacion2 = new Publicacion(publicacion.getNombre_usuario(), publicacion.getFecha_publicacion(), publicacion.getNum_likes());
+            publicacion2 = new Publicacion(publicacion.getNombre_usuario(), publicacion.getFecha_publicacion(),
+                    publicacion.getNum_likes());
             publicaciones.add(publicacion2);
-            return Response.ok("Subido correctamente").build(); 
-        }catch (Exception e){
+            return Response.ok("Subido correctamente").build();
+        } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
         }
     }
 }
-

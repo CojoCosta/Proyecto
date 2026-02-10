@@ -69,13 +69,13 @@
         }
     </style>
     <?php
-    if ((isset($_POST['nombre'])) && ($_POST['nombre'] != '') && (isset($_POST['apellidos'])) && ($_POST['apellidos'] != '') && (isset($_POST['nombreUsuario'])) && ($_POST['nombreUsuario'] != '') && (isset($_POST['email'])) && ($_POST['email'] != '') && (isset($_POST['password'])) && ($_POST['password'] != '') && (isset($_POST['fechaNacimiento'])) && ($_POST['fechaNacimiento'] != '')) {
+    if ((isset($_POST['nombre'])) && ($_POST['nombre'] != '') && (isset($_POST['apellidos'])) && ($_POST['apellidos'] != '') && (isset($_POST['nombre_usuario'])) && ($_POST['nombre_usuario'] != '') && (isset($_POST['email'])) && ($_POST['email'] != '') && (isset($_POST['password'])) && ($_POST['password'] != '') && (isset($_POST['fecha_nacimiento'])) && ($_POST['fecha_nacimiento'] != '')) {
         //llamada al moddelo logico
         require_once '../App_Web/modelos/Usuario.php';
         //crear objeto
         $usuario = new Usuario();
         //Booleana
-        $resultadoConsulta = $usuario->setUsuario($_POST['nombre'], $_POST['apellidos'], $_POST['nombreUsuario'], $_POST['email'], $_POST['password'], $_POST['fechaNacimiento']);
+        // $resultadoConsulta = $usuario->setUsuario($_POST['nombre_usuario'], $_POST['nombre'], $_POST['apellidos'], $_POST['email'], $_POST['password'], $_POST['fecha_nacimiento']);
     }
 
     ?>
@@ -88,12 +88,12 @@
     require_once 'Header.php'
     ?>
     <form action="" <?php echo $_SERVER['PHP_SELF'] ?>"" method="post">
+        <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="NombreUsuario"><br><br>
         <input type="text" name="nombre" id="nombre" placeholder="Nombre"><br><br>
         <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos"><br><br>
-        <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="NombreUsuario"><br><br>
         <input type="email" name="email" id="email" placeholder="Email"><br><br>
         <input type="password" name="password" id="password" placeholder="Contraseña"><br><br>
-        <input type="date" name="fechaNacimiento" id="fechaNacimiento"><br><br>
+        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"><br><br>
         <input type="submit" value="Registrarse">
     </form>
     <?php

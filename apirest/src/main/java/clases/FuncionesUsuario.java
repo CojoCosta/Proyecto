@@ -18,7 +18,6 @@ import jakarta.ws.rs.core.Response;
 @Path("/usuarios")
 public class FuncionesUsuario {
     Conexion c = new Conexion();
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response insertarUsuario(Usuario usuario) {

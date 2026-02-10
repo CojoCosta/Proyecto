@@ -10,7 +10,7 @@ class Usuario
     private $apellidos;
     private $email;
     private $password;
-    private $fechaNacimiento;
+    private $fecha_nacimiento;
     private $database;
 
     public function __construct()
@@ -22,7 +22,7 @@ class Usuario
         $this->apellidos = "";
         $this->email = "";
         $this->password = "";
-        $this->fechaNacimiento = "";
+        $this->fecha_nacimiento = "";
         $this->database =  Conexion::conexion();
     }
 
@@ -72,13 +72,13 @@ class Usuario
         return $this->password;
     }
 
-    public function setFechaNacimiento($fechaNacimiento)
+    public function setFechaNacimiento($fecha_nacimiento)
     {
-        $this->fechaNacimiento = $fechaNacimiento;
+        $this->fecha_nacimiento = $fecha_nacimiento;
     }
     public function getFechaNacimiento()
     {
-        return $this->fechaNacimiento;
+        return $this->fecha_nacimiento;
     }
     #endregion
 
