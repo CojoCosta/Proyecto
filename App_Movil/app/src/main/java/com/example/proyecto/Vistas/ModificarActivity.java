@@ -13,7 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.proyecto.R;
-import com.example.proyecto.Usuario;
+import com.example.proyecto.Modelos.Usuario;
 
 public class ModificarActivity extends AppCompatActivity {
     Usuario usuarioPrincipal, usuarioModificado;
@@ -33,7 +33,7 @@ public class ModificarActivity extends AppCompatActivity {
             apellidos = findViewById(R.id.editApellidosEd);
             email = findViewById(R.id.editEmailEd);
             password = findViewById(R.id.editPasswordEd);
-            editar = findViewById(R.id.btnEditar);
+            editar = findViewById(R.id.btEditar);
             volverPerfil = findViewById(R.id.volverPerfil);
 
             Intent intent = getIntent();

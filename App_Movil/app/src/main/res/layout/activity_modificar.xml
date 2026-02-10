@@ -192,7 +192,7 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar3" />
 
     <Button
-        android:id="@+id/btnEditar"
+        android:id="@+id/btEditar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Editar"

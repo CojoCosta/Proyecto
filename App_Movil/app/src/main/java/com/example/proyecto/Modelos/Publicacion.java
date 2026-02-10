@@ -1,6 +1,4 @@
-package com.example.proyecto;
-
-import android.widget.ImageView;
+package com.example.proyecto.Modelos;
 
 import java.sql.Date;
 

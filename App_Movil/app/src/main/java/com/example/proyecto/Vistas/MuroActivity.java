@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto.R;
-import com.example.proyecto.Usuario;
+import com.example.proyecto.Modelos.Usuario;
 
 public class MuroActivity extends AppCompatActivity {
     Usuario usuario;

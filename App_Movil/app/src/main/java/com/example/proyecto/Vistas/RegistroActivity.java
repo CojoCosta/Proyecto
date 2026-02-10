@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.proyecto.APIREST;
 import com.example.proyecto.R;
-import com.example.proyecto.Usuario;
+import com.example.proyecto.Modelos.Usuario;
 
 public class RegistroActivity extends AppCompatActivity {
     Usuario usuario;

@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyecto.Modelos.Publicacion;
+import com.example.proyecto.Modelos.Usuario;
+
 import java.util.ArrayList;
 
 public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHolder> {

@@ -2,6 +2,9 @@ package com.example.proyecto;
 
 import android.util.Log;
 
+import com.example.proyecto.Modelos.Publicacion;
+import com.example.proyecto.Modelos.Usuario;
+
 import org.json.JSONObject;
 
 import java.io.IOException;

@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.proyecto.APIREST;
 import com.example.proyecto.R;
-import com.example.proyecto.Usuario;
+import com.example.proyecto.Modelos.Usuario;
 
 public class PerfilUsuarioActivity extends AppCompatActivity {
 Usuario usuario;
@@ -37,7 +37,7 @@ Button editarPerfil;
             apellidos = findViewById(R.id.txtApellidosP);
             nombre_usuario = findViewById(R.id.txtNombreUsuarioP);
             descripcion = findViewById(R.id.txtDescripcion);
-            editarPerfil = findViewById(R.id.btnEditar);
+            editarPerfil = findViewById(R.id.btEditar);
             tb = findViewById(R.id.tbMuro);
             setSupportActionBar(tb);
             ab = getSupportActionBar();
