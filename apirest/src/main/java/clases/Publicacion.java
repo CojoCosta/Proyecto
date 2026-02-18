@@ -75,24 +75,5 @@ public class Publicacion {
 
     // #endregion
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response subirPublicacion(Publicacion publicacion) {
-        Publicacion publicacion2 = null;
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            Connection conexion = c.getConexion();
-            PreparedStatement ps = conexion.prepareStatement(
-                    "INSERT INTO publicaciones (nombre_usuario, fecha_publicacion, num_likes) VALUES ('?', '?', '?')");
-            ps.setString(2, publicacion.getNombre_usuario());
-            ps.setDate(3, publicacion.getFecha_publicacion());
-            ps.setInt(4, publicacion.getNum_likes());
-            publicacion2 = new Publicacion(publicacion.getNombre_usuario(), publicacion.getFecha_publicacion(),
-                    publicacion.getNum_likes());
-            publicaciones.add(publicacion2);
-            return Response.ok("Subido correctamente").build();
-        } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
-        }
-    }
+
 }

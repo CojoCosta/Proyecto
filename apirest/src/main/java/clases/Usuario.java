@@ -1,20 +1,6 @@
 package clases;
 
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 
 
 public class Usuario {
@@ -26,7 +12,6 @@ public class Usuario {
     private Date fecha_nacimiento;
     private String password;
     
-   
 
     // #region SET Y GET
     public void setIdUsuario(int id_usuario) {
