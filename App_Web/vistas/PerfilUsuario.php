@@ -37,7 +37,6 @@
             margin-bottom: 15px;
         }
 
-
         .profile-header h2 {
             margin: 0;
             font-size: 28px;
@@ -114,7 +113,6 @@
             <button>Cambiar Contraseña</button>
         </div>
     </div>
-
     <?php
     require_once 'Bottom.php';
     ?>
