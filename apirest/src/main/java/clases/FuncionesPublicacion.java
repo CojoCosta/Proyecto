@@ -28,13 +28,46 @@ public class FuncionesPublicacion {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = DriverManager.getConnection(url, user, password);
-            PreparedStatement ps = conexion.prepareStatement("INSERT INTO publicaciones (nombre_usuario, fecha_publicacion, num_likes) VALUES ('?', '?', '?')");
-            ps.setString(3, publicacion.getNombre_usuario());
-            ps.setDate(4, publicacion.getFecha_publicacion());
-            ps.setInt(5, publicacion.getNum_likes());
-            return Response.ok("Subido correctamente").build();
+            String query = "INSERT INTO publicaciones (nombre_usuario, contenido, fecha_publicacion, num_likes) VALUES (?, ?, ?, ?)";
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setString(1, publicacion.getNombre_usuario());
+            ps.setString(2, publicacion.getContenido());
+            ps.setString(3, publicacion.getFecha_publicacion());
+            ps.setInt(4, publicacion.getNum_likes());
+            ps.executeUpdate();
+            return Response.ok("Publicación creada correctamente").build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error: " + e.getMessage()).build();
+        }
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerPublicaciones() {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection(url, user, password);
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM publicaciones ORDER BY id_publicacion DESC");
+            
+            StringBuilder json = new StringBuilder("[");
+            boolean first = true;
+            while (rs.next()) {
+                if (!first) json.append(",");
+                json.append("{");
+                json.append("\"id_publicacion\":").append(rs.getInt("id_publicacion")).append(",");
+                json.append("\"nombre_usuario\":\"").append(rs.getString("nombre_usuario")).append("\",");
+                json.append("\"contenido\":\"").append(rs.getString("contenido")).append("\",");
+                json.append("\"fecha_publicacion\":\"").append(rs.getString("fecha_publicacion")).append("\",");
+                json.append("\"num_likes\":").append(rs.getInt("num_likes"));
+                json.append("}");
+                first = false;
+            }
+            json.append("]");
+            
+            return Response.ok(json.toString()).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error: " + e.getMessage()).build();
         }
     }
 }

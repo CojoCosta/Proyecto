@@ -25,9 +25,9 @@ class Request
 
         $response = curl_exec($cURLHandle);
 
-        if (curl_errno($cURLHandle)) {
-            throw new Exception("Error en la API: " . curl_error($cURLHandle));
-        }
+        // if (curl_errno($cURLHandle)) {
+        //     throw new Exception("Error en la API: " . curl_error($cURLHandle));
+        // }
 
         curl_close($cURLHandle);
 

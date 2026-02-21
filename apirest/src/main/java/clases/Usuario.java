@@ -1,7 +1,5 @@
 package clases;
 
-import java.sql.Date;
-
 
 public class Usuario {
     private int id_usuario;
@@ -9,7 +7,7 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private String email;
-    private Date fecha_nacimiento;
+    private String fecha_nacimiento;
     private String password;
     
 
@@ -54,11 +52,11 @@ public class Usuario {
         return email;
     }
 
-    public void setFechaNacimiento(Date fecha_nacimiento) {
+    public void setFechaNacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fecha_nacimiento;
     }
 
@@ -75,7 +73,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre_usuario, String nombre, String apellidos, String email, Date fecha_nacimiento,
+    public Usuario(String nombre_usuario, String nombre, String apellidos, String email, String fecha_nacimiento,
             String password) {
         this.nombre_usuario = nombre_usuario;
         this.nombre = nombre;

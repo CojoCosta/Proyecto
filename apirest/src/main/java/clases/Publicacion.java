@@ -10,7 +10,8 @@ public class Publicacion {
     private int id_publicacion;
     private int id_usuario;
     private String nombre_usuario;
-    private Date fecha_publicacion;
+    private String contenido;
+    private String fecha_publicacion;
     private int num_likes;
     ArrayList<Publicacion> publicaciones = new ArrayList<>();
     Conexion c = new Conexion();
@@ -39,12 +40,20 @@ public class Publicacion {
     public String getNombre_usuario() {
         return nombre_usuario;
     }
+    
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
 
-    public void setFecha_publicacion(Date fecha_publicacion) {
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setFecha_publicacion(String fecha_publicacion) {
         this.fecha_publicacion = fecha_publicacion;
     }
 
-    public Date getFecha_publicacion() {
+    public String getFecha_publicacion() {
         return fecha_publicacion;
     }
 
@@ -61,7 +70,7 @@ public class Publicacion {
     public Publicacion() {
     }
 
-    public Publicacion(String nombre_usuario, Date fecha_publicacion, int num_likes) {
+    public Publicacion(String nombre_usuario, String fecha_publicacion, int num_likes) {
         this.nombre_usuario = nombre_usuario;
         this.fecha_publicacion = fecha_publicacion;
         this.num_likes = num_likes;

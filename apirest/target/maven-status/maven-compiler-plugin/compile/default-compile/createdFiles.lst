@@ -1,4 +1,5 @@
 clases\Conexion.class
+clases\FuncionesPublicacion.class
 clases\FuncionesUsuario.class
 clases\Publicacion.class
 clases\Usuario.class

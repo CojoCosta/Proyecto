@@ -1,70 +1,90 @@
 <?php
-require_once 'Request.php';
-Class Publicacion{
+require_once '../conexion/Request.php';
+
+class Publicacion {
     private $path;
     private $request;
+    private $basePath = "/publicaciones";
 
-    
     private $id_usuario;
+    private $nombre_usuario;
+    private $contenido;
     private $fecha_publicacion;
     private $num_likes;
-    private $database;
-    
 
-    public function __construct(){
-        $this->path =$this->path = "http://10.0.2.2:8080/apirest/rest/publicacion";
-        $this->request = new Request($this->path);
+    public function __construct() {
+        $this->request = new Request("http://localhost:8080/apirest/rest");
         $this->id_usuario = 0;
+        $this->nombre_usuario = "";
+        $this->contenido = "";
         $this->fecha_publicacion = "";
         $this->num_likes = 0;
-        $this->database =  Conexion::conexion();
     }
+    
     #region SETTERS Y GETTERS
-    public function setIdUsuario($Id_usuario){$this->id_usuario = $Id_usuario;}
-    public function getIdUsuario(){return $this->id_usuario;}
+    public function setIdUsuario($id_usuario) { $this->id_usuario = $id_usuario; }
+    public function getIdUsuario() { return $this->id_usuario; }
 
-    public function setFechaPublicacion($fecha_publicacion){$this->fecha_publicacion = $fecha_publicacion;}
-    public function getFechaPublicacion(){return $this->fecha_publicacion;}
+    public function setNombreUsuario($nombre_usuario) { $this->nombre_usuario = $nombre_usuario; }
+    public function getNombreUsuario() { return $this->nombre_usuario; }
 
-    public function setNumLikes($num_likes){$this->num_likes = $num_likes;}
-    public function getNumLikes(){return $this->num_likes;}
+    public function setContenido($contenido) { $this->contenido = $contenido; }
+    public function getContenido() { return $this->contenido; }
+
+    public function setFechaPublicacion($fecha_publicacion) { $this->fecha_publicacion = $fecha_publicacion; }
+    public function getFechaPublicacion() { return $this->fecha_publicacion; }
+
+    public function setNumLikes($num_likes) { $this->num_likes = $num_likes; }
+    public function getNumLikes() { return $this->num_likes; }
     #endregion
 
-    public function getPublicacion()
-    {
-        return $this->request->request('GET', '/publicacion');
+    // Obtener todas las publicaciones
+    public function getPublicaciones() {
+        $response = $this->request->request('GET', $this->basePath);
+        return $response;
     }
 
-    public function subirPublicacion($id_usuario, $fecha_publicacion, $num_likes)
-    {
+    // Subir publicación usando las propiedades internas
+    public function subirPublicacion() {
         $data = [
-            'id_usuario' => $id_usuario,
-            'fecha_publicacion' => $fecha_publicacion,
-            'num_likes' => $num_likes
+            'nombre_usuario' => $this->nombre_usuario,
+            'contenido' => $this->contenido,
+            'fecha_publicacion' => $this->fecha_publicacion,
+            'num_likes' => $this->num_likes
         ];
 
-        return $this->request->request('POST', '/publicacion', $data);
+        return $this->request->request('POST', $this->basePath, $data);
     }
 
-    public function editarPublicación($id_publicacion)
-    {
-        return $this->request->request('GET', "/publicacion/{$id_publicacion}");
+    // Subir publicación con parámetros directo (método alternativo)
+    public function subirPublicacionConParametros($nombre_usuario, $contenido, $fecha_publicacion, $num_likes) {
+        $this->nombre_usuario = $nombre_usuario;
+        $this->contenido = $contenido;
+        $this->fecha_publicacion = $fecha_publicacion;
+        $this->num_likes = $num_likes;
+        
+        return $this->subirPublicacion();
     }
 
-    public function actualizarPublicacion($id_publicacion, $id_usuario, $fecha_publicacion, $num_likes)
-    {
+    // Obtener una publicación específica
+    public function obtenerPublicacion($id_publicacion) {
+        return $this->request->request('GET', $this->basePath . "/{$id_publicacion}");
+    }
+
+    // Actualizar publicación
+    public function actualizarPublicacion($id_publicacion, $nombre_usuario, $contenido, $num_likes) {
         $data = [
             'id_publicacion' => $id_publicacion,
-            'id_usuario' => $id_usuario,
-            'fecha_publicacion' => $fecha_publicacion,
+            'nombre_usuario' => $nombre_usuario,
+            'contenido' => $contenido,
             'num_likes' => $num_likes
         ];
 
-        return $this->request->request('PUT', "/publicacion/{$id_publicacion}", $data);
+        return $this->request->request('PUT', $this->basePath . "/{$id_publicacion}", $data);
     }
 
-    public function borrarPublicacion($id)
-    {
-        return $this->request->request('DELETE', "/publicacion/{$id}");
+    // Borrar publicación
+    public function borrarPublicacion($id) {
+        return $this->request->request('DELETE', $this->basePath . "/{$id}");
     }
 }
