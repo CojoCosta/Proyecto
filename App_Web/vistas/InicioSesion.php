@@ -75,7 +75,6 @@
     <?php
     require_once 'Header.php';
     
-    // Mostrar error si existe
     if (isset($error_login)) {
         echo '<p class="error">' . htmlspecialchars($error_login) . '</p>';
     }

@@ -162,15 +162,13 @@ require_once 'Header.php';
         <!-- Formulario para publicar -->
         <div class="publicar-form">
             <h3>Nueva Publicacion</h3>
-            <form action="../controladores/ControladorUsuarios.php" method="post">
+            <form action="Muro.php" method="post">
                 <input type="hidden" name="accion" value="publicar">
-                <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Tu nombre de usuario" required><br>
                 <textarea name="contenido" id="contenido" placeholder="Que estas pensando?" required></textarea><br>
                 <input type="submit" value="Publicar">
             </form>
         </div>
         
-        <!-- Lista de publicaciones -->
         <div class="publicaciones">
             <h3>Publicaciones Recientes</h3>
             <?php

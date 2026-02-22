@@ -5,20 +5,17 @@ class Publicacion {
     private $path;
     private $request;
     private $basePath = "/publicaciones";
-
     private $id_usuario;
     private $nombre_usuario;
-    private $contenido;
     private $fecha_publicacion;
-    private $num_likes;
+    private $contenido;
 
     public function __construct() {
         $this->request = new Request("http://localhost:8080/apirest/rest");
         $this->id_usuario = 0;
         $this->nombre_usuario = "";
-        $this->contenido = "";
         $this->fecha_publicacion = "";
-        $this->num_likes = 0;
+        $this->contenido = "";
     }
     
     #region SETTERS Y GETTERS
