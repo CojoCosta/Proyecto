@@ -2,7 +2,6 @@
 require_once '../conexion/Request.php';
 
 class Publicacion {
-    private $path;
     private $request;
     private $basePath = "/publicaciones";
     private $id_usuario;
@@ -30,9 +29,6 @@ class Publicacion {
 
     public function setFechaPublicacion($fecha_publicacion) { $this->fecha_publicacion = $fecha_publicacion; }
     public function getFechaPublicacion() { return $this->fecha_publicacion; }
-
-    public function setNumLikes($num_likes) { $this->num_likes = $num_likes; }
-    public function getNumLikes() { return $this->num_likes; }
     #endregion
 
     // Obtener todas las publicaciones
@@ -47,18 +43,16 @@ class Publicacion {
             'nombre_usuario' => $this->nombre_usuario,
             'contenido' => $this->contenido,
             'fecha_publicacion' => $this->fecha_publicacion,
-            'num_likes' => $this->num_likes
         ];
 
         return $this->request->request('POST', $this->basePath, $data);
     }
 
     // Subir publicación con parámetros directo (método alternativo)
-    public function subirPublicacionConParametros($nombre_usuario, $contenido, $fecha_publicacion, $num_likes) {
+    public function subirPublicacionConParametros($nombre_usuario, $contenido, $fecha_publicacion) {
         $this->nombre_usuario = $nombre_usuario;
         $this->contenido = $contenido;
         $this->fecha_publicacion = $fecha_publicacion;
-        $this->num_likes = $num_likes;
         
         return $this->subirPublicacion();
     }
@@ -69,12 +63,11 @@ class Publicacion {
     }
 
     // Actualizar publicación
-    public function actualizarPublicacion($id_publicacion, $nombre_usuario, $contenido, $num_likes) {
+    public function actualizarPublicacion($id_publicacion, $nombre_usuario, $contenido) {
         $data = [
             'id_publicacion' => $id_publicacion,
             'nombre_usuario' => $nombre_usuario,
             'contenido' => $contenido,
-            'num_likes' => $num_likes
         ];
 
         return $this->request->request('PUT', $this->basePath . "/{$id_publicacion}", $data);
