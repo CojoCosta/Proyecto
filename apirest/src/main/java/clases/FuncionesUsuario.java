@@ -94,21 +94,17 @@ public class FuncionesUsuario {
     @Path("/modificar/{nombre_usuario}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response modificarUsuario(@PathParam("nombre_usuario") String nombre_usuario, Usuario usuario) {
-        try {
-            Connection conexion = DriverManager.getConnection(url, user, password);
-            String query = "UPDATE usuarios SET nombre=?, apellidos=?, email=?, password=? WHERE nombre_usuario=?";
-            PreparedStatement ps = conexion.prepareStatement(query);
+        try (Connection conexion = DriverManager.getConnection(url, user, password);
+        PreparedStatement ps = conexion.prepareStatement("UPDATE usuarios SET nombre=?, apellidos=?, email=?, password=? WHERE nombre_usuario=?")){
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellidos());
             ps.setString(3, usuario.getEmail());
             ps.setString(4, usuario.getPassword());
             ps.setString(5, nombre_usuario);
-
             ps.executeUpdate();
-
             return Response.ok("Actualizado").build();
         } catch (Exception e) {
-            return Response.status(500).entity("Error").build();
+            return Response.status(500).entity("Error interno: " + e.getMessage()).build();
         }
     }
 

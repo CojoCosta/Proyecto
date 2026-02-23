@@ -12,4 +12,5 @@
     <string name="Telefono">Teléfono</string>
     <string name="Fecha">Data de nac.</string>
     <string name="Editar">Editar perfil</string>
+    <string name="Publicar">Publicar</string>
 </resources>

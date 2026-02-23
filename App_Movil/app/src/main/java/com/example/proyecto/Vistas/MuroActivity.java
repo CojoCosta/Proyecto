@@ -10,6 +10,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto.R;
@@ -20,6 +22,7 @@ public class MuroActivity extends AppCompatActivity {
     Toolbar tb;
     ActionBar ab;
     RecyclerView rv;
+    RecyclerView.LayoutManager layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +32,16 @@ public class MuroActivity extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            tb = findViewById(R.id.tbMuro);
-            setSupportActionBar(tb);
-            ab = getSupportActionBar();
-            getWindow().setNavigationBarColor(getColor(R.color.Azul_Logo));
-            getWindow().setStatusBarColor(getColor(R.color.Azul_Logo));
-            Intent intentUsuario = getIntent();
-            usuario = (Usuario) intentUsuario.getSerializableExtra("usuario");
             return insets;
         });
+        tb = findViewById(R.id.tbMuro);
+        setSupportActionBar(tb);
+        ab = getSupportActionBar();
+        getWindow().setNavigationBarColor(getColor(R.color.Azul_Logo));
+        getWindow().setStatusBarColor(getColor(R.color.Azul_Logo));
+        Intent intentUsuario = getIntent();
+        usuario = (Usuario) intentUsuario.getSerializableExtra("usuario");
+        rv = findViewById(R.id.recyclerView);
+        layout = new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false);
     }
 }

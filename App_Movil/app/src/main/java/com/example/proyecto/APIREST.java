@@ -28,6 +28,9 @@ public class APIREST {
     public interface LoginCallback {
         void onLoginResult(boolean success, Usuario u);
     }
+    public interface ModificarUsuarioCallback {
+        void onResult(boolean success, Usuario usuario);
+    }
     //#endregion
     public void anadirUsuario(String nombre, String apellidos, String nombre_usuario, String email, String password, String fecha_nacimiento){
         new Thread(()-> {
@@ -45,7 +48,6 @@ public class APIREST {
                 jsonObject.put("apellidos", apellidos);
                 jsonObject.put("email", email);
                 jsonObject.put("password", password);
-                // jsonObject.put("fecha_nacimiento", fecha_nacimiento);
 
                 System.out.println(jsonObject);
 
@@ -103,5 +105,43 @@ public class APIREST {
             }
         });
     }
+    public void modificarUsuario(String nombre, String apellidos, String email, String password, ModificarUsuarioCallback callback) {
+        new Thread(() -> {
+            try {
+                URL url = new URL(pathUsuarios);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("PUT");
+                con.setRequestProperty("Content-Type", "application/json");
+                con.setRequestProperty("Accept", "application/json");
+                con.setDoOutput(true);
 
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("nombre", nombre);
+                jsonObject.put("apellidos", apellidos);
+                jsonObject.put("email", email);
+                jsonObject.put("password", password);
+
+                try (OutputStream os = con.getOutputStream()) {
+                    os.write(jsonObject.toString().getBytes(StandardCharsets.UTF_8));
+                }
+
+                int code = con.getResponseCode();
+
+                // Notificar al callback en el hilo principal
+                boolean success = (code >= 200 && code < 300); // ejemplo: 2xx = éxito
+                Usuario usuario = new Usuario(nombre, apellidos, email, password); // crear objeto Usuario actualizado
+
+                // Ejecutar en hilo principal
+                new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
+                    callback.onResult(success, usuario);
+                });
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
+                    callback.onResult(false, null);
+                });
+            }
+        }).start();
+    }
 }

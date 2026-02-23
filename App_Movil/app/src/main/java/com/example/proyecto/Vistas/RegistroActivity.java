@@ -52,7 +52,7 @@ public class RegistroActivity extends AppCompatActivity {
         editFecha = findViewById(R.id.editFechaReg);
         tenerCuenta = findViewById(R.id.tenerCuentaReg);
         btnRegistrar = findViewById(R.id.btnRegistrar);
-        tbRegistro = findViewById(R.id.tbRegistro);
+        tbRegistro = findViewById(R.id.tbNuevaPubli);
         apirest = new APIREST();
 
 

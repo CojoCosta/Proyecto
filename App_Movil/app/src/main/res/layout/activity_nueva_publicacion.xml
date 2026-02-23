@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Vistas.NuevaPublicacionActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="413dp"
@@ -19,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbRegistro"
+        android:id="@+id/tbNuevaPubli"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/Azul_Logo"
@@ -35,30 +36,39 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/logo3"
-        app:layout_constraintBottom_toBottomOf="@+id/tbRegistro"
-        app:layout_constraintEnd_toEndOf="@+id/tbRegistro"
+        app:layout_constraintBottom_toBottomOf="@+id/tbNuevaPubli"
+        app:layout_constraintEnd_toEndOf="@+id/tbNuevaPubli"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/subirPubli"
+        android:id="@+id/btnSubirPubli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/Publicar"
         app:layout_constraintBottom_toTopOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editContenido" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-    <EditText
-        android:id="@+id/editContenido"
-        android:layout_width="259dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
         android:layout_height="285dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/subirPubli"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/Azul_Logo"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubirPubli"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbRegistro" />
+        app:layout_constraintTop_toBottomOf="@+id/tbNuevaPubli">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editContenido"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/Negro" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
