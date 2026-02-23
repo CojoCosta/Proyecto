@@ -60,7 +60,11 @@ public class FuncionesUsuario {
             ps.setString(1, nombre_usuario);
             ps.setString(2, password1);
             ResultSet rs = ps.executeQuery();
-            return Response.ok(usuario).build();
+            if (rs.next()) {
+                usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),rs.getString("email"), rs.getString("fecha_nacimiento"), rs.getString("password"));
+                return Response.ok(usuario).build();
+            }
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
         }

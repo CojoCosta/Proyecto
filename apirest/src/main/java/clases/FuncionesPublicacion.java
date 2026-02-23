@@ -9,9 +9,7 @@ import java.sql.Statement;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -28,12 +26,11 @@ public class FuncionesPublicacion {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = DriverManager.getConnection(url, user, password);
-            String query = "INSERT INTO publicaciones (nombre_usuario, contenido, fecha_publicacion, num_likes) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO publicaciones (nombre_usuario, contenido, fecha_publicacion) VALUES (?, ?, ?)";
             PreparedStatement ps = conexion.prepareStatement(query);
             ps.setString(1, publicacion.getNombre_usuario());
             ps.setString(2, publicacion.getContenido());
             ps.setString(3, publicacion.getFecha_publicacion());
-            ps.setInt(4, publicacion.getNum_likes());
             ps.executeUpdate();
             return Response.ok("Publicación creada correctamente").build();
         } catch (Exception e) {

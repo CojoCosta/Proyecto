@@ -56,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
         $publicacion->setNombreUsuario($_POST['nombre_usuario']);
         $publicacion->setContenido($_POST['contenido']);
         $publicacion->setFechaPublicacion(date('Y-m-d'));
-        $publicacion->setNumLikes(0);
         
         try {
             $resultado = $publicacion->subirPublicacion();
