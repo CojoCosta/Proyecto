@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,20 +63,30 @@
         form input[type="submit"]:hover {
             background-color: #002540;
         }
+        
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <?php
-    require_once 'Header.php'
+    require_once 'Header.php';
+    
+    if (isset($error_login)) {
+        echo '<p class="error">' . htmlspecialchars($error_login) . '</p>';
+    }
     ?>
-    <form action="" <?php echo $_SERVER['PHP_SELF'] ?>"" method="post">
+    <form action="../controladores/ControladorUsuarios.php" method="post">
+        <input type="hidden" name="accion" value="login">
         <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre Usuario"><br><br>
         <input type="password" name="password" id="password" placeholder="Contraseña"><br><br>
         <input type="submit" value="Iniciar Sesión">
     </form>
     <?php
-    require_once 'Bottom.php'
+    require_once 'Bottom.php';
     ?>
 </body>
 </html>
-

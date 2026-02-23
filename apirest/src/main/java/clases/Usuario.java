@@ -1,21 +1,5 @@
 package clases;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PUT;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-
 
 public class Usuario {
     private int id_usuario;
@@ -23,10 +7,9 @@ public class Usuario {
     private String nombre;
     private String apellidos;
     private String email;
-    private Date fecha_nacimiento;
+    private String fecha_nacimiento;
     private String password;
     
-   
 
     // #region SET Y GET
     public void setIdUsuario(int id_usuario) {
@@ -69,11 +52,11 @@ public class Usuario {
         return email;
     }
 
-    public void setFechaNacimiento(Date fecha_nacimiento) {
+    public void setFechaNacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fecha_nacimiento;
     }
 
@@ -90,7 +73,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre_usuario, String nombre, String apellidos, String email, Date fecha_nacimiento,
+    public Usuario(String nombre_usuario, String nombre, String apellidos, String email, String fecha_nacimiento,
             String password) {
         this.nombre_usuario = nombre_usuario;
         this.nombre = nombre;

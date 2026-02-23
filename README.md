@@ -89,7 +89,7 @@ _Leash_ es una aplicación multiplataforma (web, móvil y escritorio) orientada 
 - Creación en la clase Usuario.java de las funciones para insertar, obtener todos los datos y obtener datos de inicio de sesion de un usuario.
 - Creacion en la clase Publicacion.java de la funcion para subir una publicacion.
 #### App Móvil
-- Creación de las vistas y sus respectivos loyouts:
+- Creación de las vistas y sus respectivos layouts:
   - PerfilUsuarioActivity.java
 ---
 ## Tecnologías utilizadas
@@ -102,7 +102,7 @@ _Leash_ es una aplicación multiplataforma (web, móvil y escritorio) orientada 
 
 ### 2ª Semana de febrero
 #### App Móvil
-- Creación de las vistas y sus respectivos loyouts:
+- Creación de las vistas y sus respectivos layouts:
   - ModificarUsuarioActivity.java
 
 ## Autor

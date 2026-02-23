@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -31,7 +31,6 @@
         form input[type="date"] {
             width: 100%;
             padding: 12px;
-            /* margin-bottom: 16px; */
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 15px;
@@ -67,37 +66,48 @@
         form input[type="submit"]:hover {
             background-color: #002540;
         }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #ffebee;
+            border-radius: 8px;
+        }
+
+        .success {
+            color: green;
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+        }
     </style>
-    <?php
-    if ((isset($_POST['nombre'])) && ($_POST['nombre'] != '') && (isset($_POST['apellidos'])) && ($_POST['apellidos'] != '') && (isset($_POST['nombre_usuario'])) && ($_POST['nombre_usuario'] != '') && (isset($_POST['email'])) && ($_POST['email'] != '') && (isset($_POST['password'])) && ($_POST['password'] != '') && (isset($_POST['fecha_nacimiento'])) && ($_POST['fecha_nacimiento'] != '')) {
-        //llamada al moddelo logico
-        require_once '../App_Web/modelos/Usuario.php';
-        //crear objeto
-        $usuario = new Usuario();
-        //Booleana
-        // $resultadoConsulta = $usuario->setUsuario($_POST['nombre_usuario'], $_POST['nombre'], $_POST['apellidos'], $_POST['email'], $_POST['password'], $_POST['fecha_nacimiento']);
-    }
-
-    ?>
-
-
 </head>
 
 <body>
     <?php
-    require_once 'Header.php'
+    require_once 'Header.php';
+    
+    // Mostrar error si existe
+    if (isset($error_registro)) {
+        echo '<p class="error">' . htmlspecialchars($error_registro) . '</p>';
+    }
     ?>
-    <form action="" <?php echo $_SERVER['PHP_SELF'] ?>"" method="post">
-        <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="NombreUsuario"><br><br>
-        <input type="text" name="nombre" id="nombre" placeholder="Nombre"><br><br>
-        <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos"><br><br>
-        <input type="email" name="email" id="email" placeholder="Email"><br><br>
-        <input type="password" name="password" id="password" placeholder="Contraseña"><br><br>
-        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento"><br><br>
+    <form action="../controladores/ControladorUsuarios.php" method="post">
+        <input type="hidden" name="accion" value="registrar">
+        <input type="text" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre de usuario" required><br><br>
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre" required><br><br>
+        <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required><br><br>
+        <input type="email" name="email" id="email" placeholder="Email" required><br><br>
+        <input type="password" name="password" id="password" placeholder="Contrasena" required><br><br>
+        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required><br><br>
         <input type="submit" value="Registrarse">
     </form>
     <?php
-    require_once 'Bottom.php'
+    require_once 'Bottom.php';
     ?>
 
 </body>

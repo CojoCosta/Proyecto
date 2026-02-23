@@ -32,6 +32,7 @@
     #logo img:hover {
         opacity: 1;
     }
+
 </style>
 <div id = "header">
     <div id = "logo">

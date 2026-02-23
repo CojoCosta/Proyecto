@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Conexion {
     static final String url = "jdbc:mariadb://sql.freedb.tech:3306/freedb_Proyecto";
-     static final String user = "freedb_DiegoCosta";
+    static final String user = "freedb_DiegoCosta";
     static final String password = "2?#T#@qg5S&2sEr";
     Connection conexion;
 

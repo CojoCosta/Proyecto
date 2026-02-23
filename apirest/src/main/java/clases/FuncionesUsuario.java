@@ -37,74 +37,77 @@ public class FuncionesUsuario {
             ps.setString(2, usuario.getNombre());
             ps.setString(3, usuario.getApellidos());
             ps.setString(4, usuario.getEmail());
-            ps.setDate(5, usuario.getFechaNacimiento());
+            ps.setString(5, usuario.getFechaNacimiento());
             ps.setString(6, usuario.getPassword());
-            return Response.ok("Subido correctamente").build(); // Esto solo muestra json
+            ps.executeUpdate();
+            return Response.ok("Subido correctamente").build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
         }
     }
 
-    // @GET
-    // @Path("/inicioSesion/{nombre_usuario}/{password}")
-    // @Produces(MediaType.APPLICATION_JSON)
-    // public Response inicioSesion(@PathParam("nombre_usuario") String nombre_usuario,
-    //         @PathParam("password") String password1) {
-    //     Usuario usuario = null;
-    //     try {
-    //         Class.forName("org.mariadb.jdbc.Driver");
-    //         Connection conexion = c.getConexion();
-    //         Statement st = conexion.createStatement();
-    //         ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE nombre_usuario LIKE '" + nombre_usuario
-    //                 + "' AND password LIKE '" + password1 + "'");
-    //         if (rs.next()) {
-    //             usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),
-    //                     rs.getString("email"), rs.getDate("fecha_nacimiento"), rs.getString("password"));
-    //         }
-    //         return Response.ok(usuario).build();
-    //     } catch (Exception e) {
-    //         return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
-    //     }
-    // }
+    @GET
+    @Path("/inicioSesion/{nombre_usuario}/{password}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response inicioSesion(@PathParam("nombre_usuario") String nombre_usuario,
+            @PathParam("password") String password1) {
+        Usuario usuario = null;
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection(url, user, password);
+            PreparedStatement ps = conexion
+                    .prepareStatement("SELECT * FROM usuarios WHERE nombre_usuario = ? AND password = ?");
+            ps.setString(1, nombre_usuario);
+            ps.setString(2, password1);
+            ResultSet rs = ps.executeQuery();
+            return Response.ok(usuario).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
+        }
+    }
 
-    // @GET
-    // @Path("/perfil/{nombre_usuario}")
-    // @Produces(MediaType.APPLICATION_JSON)
-    // public Response obtenerDatosUsuario(@PathParam("nombre_usuario") String nombre_usuario) {
-    //     Usuario usuario = null;
-    //     try {
-    //         Class.forName("org.mariadb.jdbc.Driver");
-    //         Connection conexion = c.getConexion();
-    //         Statement st = conexion.createStatement();
-    //         ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE nombre_usuario LIKE '" + nombre_usuario + "'");
-    //         if (rs.next()) {
-    //             usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),
-    //                     rs.getString("email"), rs.getDate("fecha_nacimiento"), rs.getString("password"));
-    //         }
-    //         return Response.ok(usuario).build();
-    //     } catch (Exception e) {
-    //         return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
-    //     }
-    // }
+    @GET
+    @Path("/perfil/{nombre_usuario}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerDatosUsuario(@PathParam("nombre_usuario") String nombre_usuario) {
+        Usuario usuario = null;
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection(url, user, password);
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM usuarios WHERE nombre_usuario LIKE '" + nombre_usuario + "'");
+            if (rs.next()) {
+                usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),
+                        rs.getString("email"), rs.getString("fecha_nacimiento"), rs.getString("password"));
+            }
+            return Response.ok(usuario).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
+        }
+    }
 
-    // @PUT
-    // @Path("/modificar/{nombre_usuario}")
-    // @Consumes(MediaType.APPLICATION_JSON)
-    // @Produces(MediaType.APPLICATION_JSON)
-    // public Response modificarUsuario(@PathParam("nombre_usuario") String nombre_usuario) {
-    //     Usuario usuario = null;
-    //     try {
-    //         Class.forName("org.mariadb.jdbc.Driver");
-    //         Connection conexion = c.getConexion();
-    //         Statement st = conexion.createStatement();
-    //         st.executeUpdate(String.format(
-    //                 "UPDATE usuarios SET nombre_usuario = '%s' nombre = '%s', apellidos = '%s', email = '%s', password = '%s' WHERE nombre_usuario LIKE '"
-    //                         + nombre_usuario + "'",
-    //                 usuario.getNombreUsuario(), usuario.getNombre(), usuario.getApellidos(), usuario.getEmail(),
-    //                 usuario.getPassword()));
-    //         return Response.ok(usuario).build();
-    //     } catch (Exception e) {
-    //         return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
-    //     }
-    // }
+    @PUT
+    @Path("/modificar/{nombre_usuario}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response modificarUsuario(@PathParam("nombre_usuario") String nombre_usuario, Usuario usuario) {
+        try {
+            Connection conexion = DriverManager.getConnection(url, user, password);
+            String query = "UPDATE usuarios SET nombre=?, apellidos=?, email=?, password=? WHERE nombre_usuario=?";
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getApellidos());
+            ps.setString(3, usuario.getEmail());
+            ps.setString(4, usuario.getPassword());
+            ps.setString(5, nombre_usuario);
+
+            ps.executeUpdate();
+
+            return Response.ok("Actualizado").build();
+        } catch (Exception e) {
+            return Response.status(500).entity("Error").build();
+        }
+    }
+
+    // @POST
+    // @Path("/eliminar/{nombre_usuario}")
 }
