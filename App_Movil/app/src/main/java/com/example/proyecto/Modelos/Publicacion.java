@@ -2,6 +2,8 @@ package com.example.proyecto.Modelos;
 
 import java.sql.Date;
 
+import kotlin._Assertions;
+
 public class Publicacion {
     private int id_publicacion;
     private int id_usuario;
@@ -51,7 +53,8 @@ public class Publicacion {
     public Publicacion() {
     }
 
-    public Publicacion(String nombre_usuario, String contenido, String fecha_publicacion) {
+    public Publicacion(int id_usuario,String nombre_usuario, String contenido, String fecha_publicacion) {
+        this.id_usuario = id_usuario;
         this.nombre_usuario = nombre_usuario;
         this.contenido = contenido;
         this.fecha_publicacion = fecha_publicacion;

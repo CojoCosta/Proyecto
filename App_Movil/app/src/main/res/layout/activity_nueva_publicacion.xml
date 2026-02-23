@@ -8,18 +8,6 @@
     tools:context=".Vistas.NuevaPublicacionActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="413dp"
-        android:layout_height="40dp"
-        android:background="@color/Azul_Logo"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbNuevaPubli"
         android:layout_width="0dp"
         android:layout_height="80dp"
@@ -41,23 +29,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnSubirPubli"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Publicar"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="0dp"
         android:layout_height="285dp"
+        android:layout_margin="16dp"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/Azul_Logo"
-        app:layout_constraintBottom_toTopOf="@+id/btnSubirPubli"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbNuevaPubli">
@@ -67,8 +45,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start|top"
+            android:hint="¿Qué estás pensando?"
             android:inputType="textMultiLine"
             android:textColor="@color/Negro" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSubirPubli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/Publicar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <FrameLayout
+        android:id="@+id/bottom_nav_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <include layout="@layout/layout_nav_bar" />
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

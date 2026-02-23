@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -22,7 +23,25 @@ public class FuncionesUsuario {
     static final String url = "jdbc:mariadb://sql.freedb.tech:3306/freedb_Proyecto";
     static final String user = "freedb_DiegoCosta";
     static final String password = "2?#T#@qg5S&2sEr";
-
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response obtenerUsuarios() {
+        Usuario usuario = null;
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            Connection conexion = DriverManager.getConnection(url, user, password);
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM usuarios");
+            while (rs.next()) {
+                usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("email"), rs.getString("fecha_nacimiento"), rs.getString("password"));
+                usuarios.add(usuario);
+            }
+            return Response.ok(usuarios).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
+        }
+    }
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response insertarUsuario(Usuario usuario) {
