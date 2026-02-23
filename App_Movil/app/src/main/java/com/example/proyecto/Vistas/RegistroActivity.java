@@ -19,10 +19,14 @@ import com.example.proyecto.APIREST;
 import com.example.proyecto.R;
 import com.example.proyecto.Modelos.Usuario;
 
+import java.sql.Date;
+
+
 public class RegistroActivity extends AppCompatActivity {
     Usuario usuario;
     ActionBar actionBar;
-    EditText editNombre, editApellidos, editUsuario, editEmail, editPassword, editFecha;
+    EditText editNombre, editApellidos, editUsuario, editEmail, editPassword;
+    EditText editFecha;
     TextView tenerCuenta;
     Button btnRegistrar;
     APIREST apirest;
@@ -49,15 +53,20 @@ public class RegistroActivity extends AppCompatActivity {
         tenerCuenta = findViewById(R.id.tenerCuentaReg);
         btnRegistrar = findViewById(R.id.btnRegistrar);
         tbRegistro = findViewById(R.id.tbRegistro);
-
+        apirest = new APIREST();
 
 
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apirest.anadirUsuario(editNombre.getText().toString(), editApellidos.getText().toString(), editUsuario.getText().toString(),
+                apirest.anadirUsuario(editUsuario.getText().toString(), editNombre.getText().toString(), editApellidos.getText().toString(),
                         editEmail.getText().toString(), editPassword.getText().toString(), editFecha.getText().toString());
+                usuario = new Usuario(editUsuario.getText().toString(), editNombre.getText().toString(), editApellidos.getText().toString(),
+                        editEmail.getText().toString(), (Date)editFecha.getText(), editPassword.getText().toString());
+                Intent intent = new Intent(RegistroActivity.this, PerfilUsuarioActivity.class);
+                intent.putExtra("usuario", usuario);
+                startActivity(intent);
             }
         });
         tenerCuenta.setOnClickListener(new View.OnClickListener() {

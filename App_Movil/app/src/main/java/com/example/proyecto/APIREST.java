@@ -32,6 +32,7 @@ public class APIREST {
     public void anadirUsuario(String nombre, String apellidos, String nombre_usuario, String email, String password, String fecha_nacimiento){
         new Thread(()-> {
             try {
+                System.out.println(nombre);
                 //cambiar ip por 192.130.0.13 si no funciona en el emulador
                 URL url = new URL(pathUsuarios);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();//Abrir conexion
@@ -39,12 +40,12 @@ public class APIREST {
                 con.setRequestProperty("Content-Type", "application/json");
                 con.setDoOutput(true); //escribir en el body
                 JSONObject jsonObject =  new JSONObject();
-                jsonObject.put("nombre_usuario", nombre_usuario);
+                jsonObject.put("nombreUsuario", nombre_usuario);
                 jsonObject.put("nombre", nombre);
                 jsonObject.put("apellidos", apellidos);
                 jsonObject.put("email", email);
                 jsonObject.put("password", password);
-                jsonObject.put("fecha_nacimiento", fecha_nacimiento);
+                // jsonObject.put("fecha_nacimiento", fecha_nacimiento);
 
                 System.out.println(jsonObject);
 
@@ -87,8 +88,8 @@ public class APIREST {
         new Thread(()->{
             HttpURLConnection conexion = null;
             try {
-                URL url = new URL(pathUsuarios + "/datosUsuario/{nombre_usuario}");
-                conexion = (HttpURLConnection) url.openConnection();//Abrir conexion
+                URL url = new URL(pathUsuarios + "/perfil/{nombre_usuario}");
+                conexion = (HttpURLConnection) url.openConnection();
                 conexion.setRequestMethod("GET");
                 conexion.setRequestProperty("Accept", "application/json");
                 int code = conexion.getResponseCode();

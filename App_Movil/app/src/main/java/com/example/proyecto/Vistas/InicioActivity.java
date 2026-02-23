@@ -42,7 +42,7 @@ public class InicioActivity extends AppCompatActivity {
     txtRegistro = findViewById(R.id.txt_registrar);
     getWindow().setNavigationBarColor(getColor(R.color.Azul_Logo));
     getWindow().setStatusBarColor(getColor(R.color.Azul_Logo));
-
+    apirest = new APIREST();
     txtRegistro.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -60,7 +60,7 @@ public class InicioActivity extends AppCompatActivity {
                     intent.putExtra("usuario", usuario);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(InicioActivity.this, "Usuario o contraseña erróneos", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(InicioActivity.this, "Usuario o contraseña erróneos", Toast.LENGTH_SHORT).show();
                 }
             });
 

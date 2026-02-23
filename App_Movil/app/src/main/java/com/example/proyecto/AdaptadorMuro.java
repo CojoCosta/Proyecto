@@ -39,14 +39,6 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
                 holder.getNombreUsuario().setText(u.getNombreUsuario());
             }
         }
-
-        holder.getIbLike().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.getNumLikes().setText(pu.getNumLikes()+ 1 + "");
-            }
-        });
-
     }
 
     @Override
@@ -55,12 +47,10 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView nombreUsuario, numLikes;
-        ImageButton ibLike;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.nombreUsuario = itemView.findViewById(R.id.txtUsuarioCelda);
             this.numLikes = itemView.findViewById(R.id.txtNumLikesCelda);
-            this.ibLike = itemView.findViewById(R.id.ibLikeCelda);
         }
         public TextView getNombreUsuario() {
             return nombreUsuario;
@@ -69,9 +59,6 @@ public class AdaptadorMuro extends RecyclerView.Adapter<AdaptadorMuro.MyViewHold
             return numLikes;
         }
 
-        public ImageButton getIbLike() {
-            return ibLike;
-        }
 
     }
 }

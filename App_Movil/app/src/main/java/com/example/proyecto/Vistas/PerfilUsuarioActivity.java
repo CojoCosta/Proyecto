@@ -52,8 +52,6 @@ Button editarPerfil;
                     startActivity(intent);
                 }
             });
-
-
             return insets;
         });
     }

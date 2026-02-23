@@ -204,8 +204,7 @@
         android:textColor="@color/Blanco"
         app:layout_constraintBottom_toTopOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editFechaReg" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -219,21 +218,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
-        android:id="@+id/editFechaReg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:ems="10"
-        android:hint="@string/Fecha"
-        android:inputType="datetime|date"
-        android:textColor="@color/Negro"
-        android:textColorHint="@color/Azul_Oscuro"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
-
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="0dp"
@@ -243,5 +227,15 @@
         app:layout_constraintEnd_toEndOf="@+id/tbRegistro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editFechaReg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        tools:layout_editor_absoluteX="157dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

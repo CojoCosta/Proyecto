@@ -3,46 +3,57 @@ package com.example.proyecto.Modelos;
 import java.sql.Date;
 
 public class Publicacion {
-    private int idUsuario;
-    private Date fechaPublicacion;
-    private int numLikes;
-    private int fotoPublicacion;
+    private int id_publicacion;
+    private int id_usuario;
+    private String nombre_usuario;
+    private String contenido;
+    private String fecha_publicacion;
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdPublicacion(int id_publicacion) {
+        this.id_publicacion = id_publicacion;
+    }
+
+    public int getIdPublicacion() {
+        return id_publicacion;
+    }
+
+    public void setIdUsuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public int getIdUsuario() {
-        return idUsuario;
+        return id_usuario;
     }
 
-    public void setFechaPublicacion(Date fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
+    public void setNombreUsuario(String nombre_usuario) {
+        this.nombre_usuario = nombre_usuario;
     }
 
-    public Date getFechaPublicacion() {
-        return fechaPublicacion;
+    public String getNombreUsuario() {
+        return nombre_usuario;
     }
 
-    public void setNumLikes(int numLikes) {
-        this.numLikes = numLikes;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
 
-    public int getNumLikes() {
-        return numLikes;
+    public String getContenido() {
+        return contenido;
     }
 
-    public void setFotoPublicacion(int fotoPublicacion) {
-        this.fotoPublicacion = fotoPublicacion;
+    public void setFechaPublicacion(String fecha_publicacion) {
+        this.fecha_publicacion = fecha_publicacion;
     }
 
-    public int getFotoPublicacion() {
-        return fotoPublicacion;
+    public String getFechaPublicacion() {
+        return fecha_publicacion;
     }
-    public Publicacion(int idUsuario, int fotoPublicacion, int numLikes, Date fechaPublicacion){
-        this.idUsuario = idUsuario;
-        this.fotoPublicacion = fotoPublicacion;
-        this.numLikes = numLikes;
-        this.fechaPublicacion = fechaPublicacion;
+    public Publicacion() {
+    }
+
+    public Publicacion(String nombre_usuario, String contenido, String fecha_publicacion) {
+        this.nombre_usuario = nombre_usuario;
+        this.contenido = contenido;
+        this.fecha_publicacion = fecha_publicacion;
     }
 }
