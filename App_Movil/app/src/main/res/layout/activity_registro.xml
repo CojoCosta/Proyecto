@@ -170,7 +170,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tbRegistro"
+        android:id="@+id/tbNuevaPubli"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/Azul_Logo"
@@ -193,7 +193,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbRegistro" />
+        app:layout_constraintTop_toBottomOf="@+id/tbNuevaPubli" />
 
     <Button
         android:id="@+id/btnRegistrar"
@@ -223,8 +223,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:src="@drawable/logo3"
-        app:layout_constraintBottom_toBottomOf="@+id/tbRegistro"
-        app:layout_constraintEnd_toEndOf="@+id/tbRegistro"
+        app:layout_constraintBottom_toBottomOf="@+id/tbNuevaPubli"
+        app:layout_constraintEnd_toEndOf="@+id/tbNuevaPubli"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

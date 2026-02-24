@@ -12,4 +12,5 @@
     <string name="Telefono">Telephone</string>
     <string name="Fecha">Date</string>
     <string name="Editar">Edit profile</string>
+    <string name="Publicar">Post</string>
 </resources>

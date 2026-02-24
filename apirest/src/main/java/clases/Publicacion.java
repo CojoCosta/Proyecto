@@ -1,9 +1,6 @@
 package clases;
 
-import java.sql.Date;
 import java.util.ArrayList;
-
-import jakarta.ws.rs.Path;
 
 
 public class Publicacion {
@@ -13,7 +10,6 @@ public class Publicacion {
     private String contenido;
     private String fecha_publicacion;
     ArrayList<Publicacion> publicaciones = new ArrayList<>();
-    Conexion c = new Conexion();
 
     // #region SET Y GET
     public void setId_publicacion(int id_publicacion) {
@@ -61,12 +57,13 @@ public class Publicacion {
     public Publicacion() {
     }
 
-    public Publicacion(String nombre_usuario, String contenido, String fecha_publicacion) {
+    public Publicacion(int id_publicacion ,int id_usuario, String nombre_usuario, String contenido, String fecha_publicacion) {
+        this.id_publicacion = id_publicacion;
+        this.id_usuario = id_usuario;
         this.nombre_usuario = nombre_usuario;
         this.contenido = contenido;
         this.fecha_publicacion = fecha_publicacion;
     }
-
     // #endregion
 
 

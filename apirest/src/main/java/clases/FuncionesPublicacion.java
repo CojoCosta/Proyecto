@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -26,11 +27,11 @@ public class FuncionesPublicacion {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = DriverManager.getConnection(url, user, password);
-            String query = "INSERT INTO publicaciones (nombre_usuario, contenido, fecha_publicacion) VALUES (?, ?, ?)";
+            String query = "INSERT INTO publicaciones (id_usuario, nombre_usuario, contenido, fecha_publicacion) VALUES (?, ?, ?, CURRENT_DATE)";
             PreparedStatement ps = conexion.prepareStatement(query);
-            ps.setString(1, publicacion.getNombre_usuario());
-            ps.setString(2, publicacion.getContenido());
-            ps.setString(3, publicacion.getFecha_publicacion());
+            ps.setInt(1, publicacion.getId_usuario());
+            ps.setString(2, publicacion.getNombre_usuario());
+            ps.setString(3, publicacion.getContenido());
             ps.executeUpdate();
             return Response.ok("Publicación creada correctamente").build();
         } catch (Exception e) {
@@ -41,28 +42,18 @@ public class FuncionesPublicacion {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response obtenerPublicaciones() {
+        Publicacion publi = null;
+        ArrayList<Publicacion> publicaciones2 = new ArrayList<>();
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = DriverManager.getConnection(url, user, password);
             Statement st = conexion.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM publicaciones ORDER BY id_publicacion DESC");
-            
-            StringBuilder json = new StringBuilder("[");
-            boolean first = true;
             while (rs.next()) {
-                if (!first) json.append(",");
-                json.append("{");
-                json.append("\"id_publicacion\":").append(rs.getInt("id_publicacion")).append(",");
-                json.append("\"nombre_usuario\":\"").append(rs.getString("nombre_usuario")).append("\",");
-                json.append("\"contenido\":\"").append(rs.getString("contenido")).append("\",");
-                json.append("\"fecha_publicacion\":\"").append(rs.getString("fecha_publicacion")).append("\",");
-                json.append("\"num_likes\":").append(rs.getInt("num_likes"));
-                json.append("}");
-                first = false;
+                publi = new Publicacion(rs.getInt("id_publicacion") ,rs.getInt("id_usuario"), rs.getString("nombre_usuario"), rs.getString("contenido"), rs.getString("fecha_publicacion"));
+                publicaciones2.add(publi);
             }
-            json.append("]");
-            
-            return Response.ok(json.toString()).build();
+            return Response.ok(publicaciones2).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error: " + e.getMessage()).build();
         }

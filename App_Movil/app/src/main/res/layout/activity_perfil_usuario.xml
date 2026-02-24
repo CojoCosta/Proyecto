@@ -8,21 +8,24 @@
     android:background="@color/Blanco"
     tools:context=".Vistas.PerfilUsuarioActivity">
 
-    <!-- HEADER -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbPerfil"
-        android:layout_width="412dp"
+        android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="@color/Azul_Logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- LOGO -->
-
-    <!-- FOTO PERFIL CIRCULAR -->
-
-    <!-- CARD INFO -->
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/logo3"
+        app:layout_constraintBottom_toBottomOf="@+id/tbPerfil"
+        app:layout_constraintEnd_toEndOf="@+id/tbPerfil"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView5"
@@ -38,37 +41,25 @@
         app:strokeColor="@color/Blanco"
         app:strokeWidth="4dp" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src="@drawable/logo3"
-        app:layout_constraintBottom_toBottomOf="@+id/tbPerfil"
-        app:layout_constraintEnd_toEndOf="@+id/tbPerfil"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
-        android:layout_width="362dp"
-        android:layout_height="248dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView5">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="249dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="24dp">
 
-            <!-- Usuario -->
             <TextView
                 android:id="@+id/txtNombreUsuarioP"
                 android:layout_width="match_parent"
@@ -80,7 +71,6 @@
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <!-- Nombre completo -->
             <TextView
                 android:id="@+id/txtNombreP"
                 android:layout_width="match_parent"
@@ -92,8 +82,6 @@
                 android:textColor="@color/Negro"
                 android:textSize="16sp" />
 
-            <!-- Descripción -->
-
             <TextView
                 android:id="@+id/txtApellidosP"
                 android:layout_width="match_parent"
@@ -104,8 +92,8 @@
 
             <TextView
                 android:id="@+id/txtDescripcion"
-                android:layout_width="314dp"
-                android:layout_height="122dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Descripción"
                 android:textAlignment="center"
@@ -115,17 +103,15 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- BOTÓN EDITAR -->
-
-    <!-- BOTTOM NAV -->
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:background="@color/Azul_Logo"
+    <FrameLayout
+        android:id="@+id/bottom_nav_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <include layout="@layout/layout_nav_bar" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
