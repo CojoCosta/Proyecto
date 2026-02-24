@@ -146,6 +146,33 @@ require_once 'Header.php';
             color: #666;
             padding: 40px;
         }
+        
+        /* Botón flotante para ir al perfil */
+        .btn-perfil {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #014d9eff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 1000;
+        }
+        
+        .btn-perfil:hover {
+            background-color: #002540;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -162,7 +189,7 @@ require_once 'Header.php';
         <!-- Formulario para publicar -->
         <div class="publicar-form">
             <h3>Nueva Publicacion</h3>
-            <form action="Muro.php" method="post">
+            <form action="../controladores/ControladorUsuarios.php" method="post">
                 <input type="hidden" name="accion" value="publicar">
                 <textarea name="contenido" id="contenido" placeholder="Que estas pensando?" required></textarea><br>
                 <input type="submit" value="Publicar">
@@ -181,7 +208,6 @@ require_once 'Header.php';
                     echo '  </div>';
                     echo '  <div class="publicacion-contenido">' . htmlspecialchars($pub->contenido) . '</div>';
                     echo '  <div class="publicacion-stats">';
-                    echo '    <span>' . htmlspecialchars($pub->num_likes) . ' likes</span>';
                     echo '  </div>';
                     echo '</div>';
                 }
@@ -198,5 +224,9 @@ require_once 'Header.php';
     <?php
     require_once 'Bottom.php';
     ?>
+    
+    <a href="http://localhost:3000/App_Web/vistas/PerfilUsuario.php" class="btn-perfil" title="Mi Perfil">
+        &#128100;
+    </a>
 </body>
 </html>

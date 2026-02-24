@@ -44,6 +44,7 @@ public class FuncionesUsuario {
     }
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response insertarUsuario(Usuario usuario) {
         try {
             System.out.println("hola");
@@ -65,7 +66,7 @@ public class FuncionesUsuario {
         }
     }
 
-    @GET
+    @POST
     @Path("/inicioSesion/{nombre_usuario}/{password}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response inicioSesion(@PathParam("nombre_usuario") String nombre_usuario,
@@ -83,9 +84,9 @@ public class FuncionesUsuario {
                 usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),rs.getString("email"), rs.getString("fecha_nacimiento"), rs.getString("password"));
                 return Response.ok(usuario).build();
             }
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("No crea usuario").build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error").build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
     }
 
@@ -127,6 +128,5 @@ public class FuncionesUsuario {
         }
     }
 
-    // @POST
-    // @Path("/eliminar/{nombre_usuario}")
+
 }

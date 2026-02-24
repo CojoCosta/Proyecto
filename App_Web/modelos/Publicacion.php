@@ -40,9 +40,9 @@ class Publicacion {
     // Subir publicación usando las propiedades internas
     public function subirPublicacion() {
         $data = [
+            'id_usuario' => $this->id_usuario,
             'nombre_usuario' => $this->nombre_usuario,
             'contenido' => $this->contenido,
-            'fecha_publicacion' => $this->fecha_publicacion,
         ];
 
         return $this->request->request('POST', $this->basePath, $data);

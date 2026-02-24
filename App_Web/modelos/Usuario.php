@@ -1,129 +1,5 @@
 <?php
-// require_once '../conexion/Request.php';
 
-// class Usuario
-// {
-//     private $path;
-//     private $request;
-//     private $nombre_usuario;
-//     private $nombre;
-//     private $apellidos;
-//     private $email;
-//     private $password;
-//     private $fecha_nacimiento;
-
-//     public function __construct()
-//     {
-//         $this->path = "http://10.0.2.2:8080/apirest/rest/usuarios";
-//         $this->request = new Request($this->path);
-//     }
-
-//     #region SETTERS Y GETTERS
-//     public function setNombreUsuario($nombre_usuario)
-//     {
-//         $this->nombre_usuario = $nombre_usuario;
-//     }
-//     public function getNombreUsuario()
-//     {
-//         return $this->nombre_usuario;
-//     }
-
-//     public function setNombre($nombre)
-//     {
-//         $this->nombre = $nombre;
-//     }
-//     public function getNombre()
-//     {
-//         return $this->nombre;
-//     }
-
-//     public function setApellidos($apellidos)
-//     {
-//         $this->apellidos = $apellidos;
-//     }
-//     public function getApellidos()
-//     {
-//         return $this->apellidos;
-//     }
-
-//     public function setEmail($email)
-//     {
-//         $this->email = $email;
-//     }
-//     public function getEmail()
-//     {
-//         return $this->email;
-//     }
-
-//     public function setPassword($password)
-//     {
-//         $this->password = $password;
-//     }
-//     public function getPassword()
-//     {
-//         return $this->password;
-//     }
-
-//     public function setFechaNacimiento($fecha_nacimiento)
-//     {
-//         $this->fecha_nacimiento = $fecha_nacimiento;
-//     }
-//     public function getFechaNacimiento()
-//     {
-//         return $this->fecha_nacimiento;
-//     }
-//     #endregion
-
-//     public function getUsuarios()
-//     {
-//         return $this->request->request('GET', "");
-//     }
-
-//     public function registrarUsuario($nombre_usuario, $nombre, $apellidos, $email, $password, $fecha_nacimiento)
-//     {
-//         $data = [
-//             'nombre_usuario' => $nombre_usuario,
-//             'nombre' => $nombre,
-//             'apellidos' => $apellidos,
-//             'email' => $email,
-//             'password' => $password,
-//             'fecha_nacimiento' => $fecha_nacimiento
-//         ];
-
-//         return $this->request->request('POST', "", $data);
-//     }
-
-//     public function editarUsuario($nombre_usuario)
-//     {
-//         return $this->request->request('GET', "/perfil/{$nombre_usuario}");
-//     }
-
-//     public function actualizarUsuario($nombre_usuario, $nombre, $apellidos, $email, $password, $fecha_nacimiento)
-//     {
-//         $data = [
-//             'nombre_usuario' => $nombre_usuario,
-//             'nombre' => $nombre,
-//             'apellidos' => $apellidos,
-//             'email' => $email,
-//             'password' => $password,
-//             'fecha_nacimiento' => $fecha_nacimiento
-//         ];
-
-//         return $this->request->request('PUT', "/modificar/{$nombre_usuario}", $data);
-//     }
-
-//     public function borrarUsuario($nombre_usuario)
-//     {
-//         return $this->request->request('DELETE', "/eliminar/{$nombre_usuario}");
-//     }
-
-//     public function inicioSesion($nombre_usuario, $password)
-//     {
-//         return $this->request->request('GET', "/inicioSesion/{$nombre_usuario}/{$password}");
-//     }
-// }
-
-// <?php
 require_once '../conexion/Request.php';
 
 class Usuario
@@ -142,7 +18,7 @@ class Usuario
     // Constructor: instancia la clase Request
     public function __construct()
     {
-$this->request = new Request("http://localhost:8080/apirest/rest");
+        $this->request = new Request("http://localhost:8080/apirest/rest");
     }
 
     #region SETTERS Y GETTERS
@@ -228,8 +104,24 @@ $this->request = new Request("http://localhost:8080/apirest/rest");
     // Inicio de sesión
     public function inicioSesion($nombre_usuario, $password)
     {
-        $response = $this->request->request('GET', $this->basePath . "/inicioSesion/{$nombre_usuario}/{$password}");
-        if (!$response) throw new Exception("Error al iniciar sesión");
-        return $response;
+        try {
+            error_log("Intentando login con usuario: " . $nombre_usuario);
+            $response = $this->request->request('GET', $this->basePath . "/inicioSesion/" . urlencode($nombre_usuario) . "/" . urlencode($password));
+            error_log("Response del login: " . json_encode($response));
+            
+            if (!$response) {
+                error_log("Response vacío, retornando null");
+                return null;
+            }
+            return $response;
+        } catch (Exception $e) {
+            error_log("Excepción en login: " . $e->getMessage());
+            // Si la API devuelve un 500, podría ser un inicio de sesión fallido
+            if (strpos($e->getMessage(), "Error HTTP: 500") !== false) {
+                return null; // Tratar como inicio de sesión fallido
+            }
+            // Para otros errores, lanzar la excepción
+            throw $e;
+        }
     }
 }

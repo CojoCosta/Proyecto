@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
     
     // Acción de Inicio de Sesión
     if ($_POST['accion'] === 'login') {
+        session_start();
         $usuario = new Usuario();
         
         try {
@@ -37,14 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
             
             // Verificar si se obtuvo un usuario válido
             if ($resultado && isset($resultado->nombre_usuario)) {
+                // Guardar usuario en la sesión
+                $_SESSION['usuario'] = $resultado;
+
                 // Redireccionar al muro después del login
                 header('Location: ../vistas/Muro.php');
                 exit;
             } else {
-                $error_login = "Usuario o contraseña incorrectos";
+                // Redirigir de vuelta a la página de login con un error
+                header('Location: ../vistas/InicioSesion.php?error=' . urlencode("Usuario o contraseña incorrectos"));
+                exit;
             }
         } catch (Exception $e) {
-            $error_login = "Error al iniciar sesión: " . $e->getMessage();
+            // Redirigir de vuelta a la página de login con el error de la excepción
+            header('Location: ../vistas/InicioSesion.php?error=' . urlencode("Error al iniciar sesión: " . $e->getMessage()));
+            exit;
         }
     }
     
@@ -72,7 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion'])) {
 $publicacion = new Publicacion();
 $publicaciones = $publicacion->getPublicaciones();
 
+// Acción de Ver Perfil
+if (isset($accion) && $accion === 'perfil') {
+    require_once '../vistas/PerfilUsuario.php';
+    exit;
+}
+
 // Si no hay acción, cargar las vistas por defecto
 if (!isset($accion)) {
-    require_once '../vistas/Registro.php';
+    require_once '../vistas/Muro.php';
 }

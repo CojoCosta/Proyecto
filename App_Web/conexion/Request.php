@@ -39,6 +39,10 @@ class Request
         curl_close($cURLHandle);
 
         if ($httpCode >= 400) {
+            // Si es error 500, podría ser un login fallido - retornamos null para manejarlo en el código
+            if ($httpCode === 500) {
+                return null;
+            }
             throw new Exception("Error HTTP: " . $httpCode . " - " . $response);
         }
 
