@@ -63,7 +63,7 @@ public class RegistroActivity extends AppCompatActivity {
                 apirest.anadirUsuario(editUsuario.getText().toString(), editNombre.getText().toString(), editApellidos.getText().toString(),
                         editEmail.getText().toString(), editPassword.getText().toString(), editFecha.getText().toString());
                 usuario = new Usuario(editUsuario.getText().toString(), editNombre.getText().toString(), editApellidos.getText().toString(),
-                        editEmail.getText().toString(), (Date)editFecha.getText(), editPassword.getText().toString());
+                        editEmail.getText().toString(), editPassword.getText().toString());
                 Intent intent = new Intent(RegistroActivity.this, PerfilUsuarioActivity.class);
                 intent.putExtra("usuario", usuario);
                 startActivity(intent);

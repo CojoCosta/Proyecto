@@ -62,7 +62,6 @@ public class NuevaPublicacionActivity extends AppCompatActivity {
                     apirest.anadirPublicacion(usuario.getId_usuario(), usuario.getNombreUsuario(), textoContenido, success -> {
                         if (success) {
                             Toast.makeText(this, "Publicación subida con éxito", Toast.LENGTH_SHORT).show();
-                            // Volver al muro
                             Intent muroIntent = new Intent(NuevaPublicacionActivity.this, MuroActivity.class);
                             muroIntent.putExtra("usuario", usuario);
                             startActivity(muroIntent);
