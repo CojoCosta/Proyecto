@@ -1,0 +1,11 @@
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\obj\Debug\Leash.csproj.AssemblyReference.cache
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\bin\Debug\Leash.exe.config
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\bin\Debug\Leash.exe
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\bin\Debug\Leash.pdb
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\obj\Debug\Leash.Properties.Resources.resources
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\obj\Debug\Leash.csproj.GenerateResource.cache
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\obj\Debug\Leash.csproj.CoreCompileInputs.cache
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\obj\Debug\Leash.exe
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\obj\Debug\Leash.pdb
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\obj\Debug\Leash.exe.config
+C:\Users\dcost\OneDrive\Escritorio\Proyecto\App_Escritorio\Leash\obj\Debug\Leash.Forms.LoginForm.resources
