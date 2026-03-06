@@ -1,0 +1,100 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|c:\\users\\dcost\\onedrive\\escritorio\\proyecto\\app_escritorio\\leash\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|solutionrelative:leash\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\leash\\forms\\newpostform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|solutionrelative:leash\\forms\\newpostform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\leash\\forms\\profileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|solutionrelative:leash\\forms\\profileform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\leash\\forms\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|solutionrelative:leash\\forms\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\leash\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{315D16AA-2DA9-4A29-AE83-27DB6072BFC0}|Leash\\Leash.csproj|solutionrelative:leash\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Leash\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Forms\\LoginForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Leash\\Forms\\LoginForm.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T17:28:25.226Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NewPostForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Forms\\NewPostForm.cs",
+              "RelativeDocumentMoniker": "Leash\\Forms\\NewPostForm.cs",
+              "ToolTip": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Forms\\NewPostForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Leash\\Forms\\NewPostForm.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T17:28:24.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProfileForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Forms\\ProfileForm.cs",
+              "RelativeDocumentMoniker": "Leash\\Forms\\ProfileForm.cs",
+              "ToolTip": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Forms\\ProfileForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Leash\\Forms\\ProfileForm.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T17:28:22.711Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterForm.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Forms\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "Leash\\Forms\\RegisterForm.cs",
+              "ToolTip": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Forms\\RegisterForm.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Leash\\Forms\\RegisterForm.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T17:28:21.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Form1.cs",
+              "RelativeDocumentMoniker": "Leash\\Form1.cs",
+              "ToolTip": "C:\\Users\\dcost\\OneDrive\\Escritorio\\Proyecto\\App_Escritorio\\Leash\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Leash\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T16:44:17.038Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

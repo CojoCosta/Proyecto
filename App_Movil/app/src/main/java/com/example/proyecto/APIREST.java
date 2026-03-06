@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URLEncoder;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -64,42 +65,104 @@ public class APIREST {
 
     public void inicioSesion(String nombre_usuario, String password, LoginCallback callback) {
         new Thread(() -> {
+            HttpURLConnection conn = null;
             try {
-                URL url = new URL(pathUsuarios + "inicioSesion/"+nombre_usuario+"/"+password);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("GET");
+                URL url = new URL(pathUsuarios + "inicioSesion");
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Content-Type", "application/json");
                 conn.setRequestProperty("Accept", "application/json");
+                conn.setDoOutput(true);
+
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("nombreUsuario", nombre_usuario);
+                jsonObject.put("password", password);
+                try (OutputStream os = conn.getOutputStream()) {
+                    os.write(jsonObject.toString().getBytes(StandardCharsets.UTF_8));
+                }
 
                 int code = conn.getResponseCode();
-                if (code == 200) {
+                if (code == HttpURLConnection.HTTP_NOT_FOUND || code == HttpURLConnection.HTTP_BAD_METHOD) {
+                    conn.disconnect();
+                    String nombreUsuarioEncoded = URLEncoder.encode(nombre_usuario, "UTF-8");
+                    String passwordEncoded = URLEncoder.encode(password, "UTF-8");
+                    URL legacyUrl = new URL(pathUsuarios + "inicioSesion/" + nombreUsuarioEncoded + "/" + passwordEncoded);
+                    conn = (HttpURLConnection) legacyUrl.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Accept", "application/json");
+                    code = conn.getResponseCode();
+                }
+
+                if (code == HttpURLConnection.HTTP_OK) {
                     String response = readResponse(conn);
                     JSONObject obj = new JSONObject(response);
-                    
-                    Usuario u = new Usuario(
-                            obj.optString("nombreUsuario"),
-                            obj.optString("nombre"),
-                            obj.optString("apellidos"),
-                            obj.optString("email"),
-                            null, 
-                            obj.optString("password")
-                    );
-                    u.setId_usuario(obj.optInt("id_usuario"));
-
+                    Usuario u = parseUsuario(obj);
                     new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
                         callback.onLoginResult(true, u);
                     });
                 } else {
+                    Usuario fallbackUser = autenticarConListadoUsuarios(nombre_usuario, password);
+                    boolean success = fallbackUser != null;
                     new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
-                        callback.onLoginResult(false, null);
+                        callback.onLoginResult(success, fallbackUser);
                     });
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+                Usuario fallbackUser = autenticarConListadoUsuarios(nombre_usuario, password);
+                boolean success = fallbackUser != null;
                 new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
-                    callback.onLoginResult(false , null);
+                    callback.onLoginResult(success, fallbackUser);
                 });
+            } finally {
+                if (conn != null) {
+                    conn.disconnect();
+                }
             }
         }).start();
+    }
+
+    private Usuario parseUsuario(JSONObject obj) {
+        Usuario u = new Usuario(
+                obj.optString("nombreUsuario", obj.optString("nombre_usuario")),
+                obj.optString("nombre"),
+                obj.optString("apellidos"),
+                obj.optString("email"),
+                null,
+                obj.optString("password")
+        );
+        u.setId_usuario(obj.optInt("id_usuario", obj.optInt("id")));
+        return u;
+    }
+
+    private Usuario autenticarConListadoUsuarios(String nombreUsuario, String password) {
+        HttpURLConnection conexion = null;
+        try {
+            URL url = new URL(pathUsuarios);
+            conexion = (HttpURLConnection) url.openConnection();
+            conexion.setRequestMethod("GET");
+            conexion.setRequestProperty("Accept", "application/json");
+            if (conexion.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                return null;
+            }
+
+            JSONArray array = new JSONArray(readResponse(conexion));
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject obj = array.getJSONObject(i);
+                String username = obj.optString("nombreUsuario", obj.optString("nombre_usuario"));
+                String pass = obj.optString("password");
+                if (username.equalsIgnoreCase(nombreUsuario) && pass.equals(password)) {
+                    return parseUsuario(obj);
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            return null;
+        } finally {
+            if (conexion != null) {
+                conexion.disconnect();
+            }
+        }
     }
 
     public void obtenerDatosUsuario(String nombreUsuario, ApiCallback callback){

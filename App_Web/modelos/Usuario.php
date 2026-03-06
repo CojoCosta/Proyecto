@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 require_once '../conexion/Request.php';
 
@@ -106,22 +106,73 @@ class Usuario
     {
         try {
             error_log("Intentando login con usuario: " . $nombre_usuario);
-            $response = $this->request->request('GET', $this->basePath . "/inicioSesion/" . urlencode($nombre_usuario) . "/" . urlencode($password));
+            $data = [
+                'nombreUsuario' => $nombre_usuario,
+                'password' => $password
+            ];
+            $response = $this->request->request('POST', $this->basePath . "/inicioSesion", $data);
             error_log("Response del login: " . json_encode($response));
-            
+
             if (!$response) {
-                error_log("Response vacío, retornando null");
-                return null;
+                return $this->autenticarDesdeListado($nombre_usuario, $password);
             }
             return $response;
         } catch (Exception $e) {
-            error_log("Excepción en login: " . $e->getMessage());
-            // Si la API devuelve un 500, podría ser un inicio de sesión fallido
-            if (strpos($e->getMessage(), "Error HTTP: 500") !== false) {
-                return null; // Tratar como inicio de sesión fallido
+            error_log("Excepcion en login: " . $e->getMessage());
+
+            if (strpos($e->getMessage(), "Error HTTP: 404") !== false || strpos($e->getMessage(), "Error HTTP: 405") !== false) {
+                try {
+                    $response = $this->request->request(
+                        'POST',
+                        $this->basePath . "/inicioSesion/" . urlencode($nombre_usuario) . "/" . urlencode($password)
+                    );
+                    if (!$response) {
+                        return $this->autenticarDesdeListado($nombre_usuario, $password);
+                    }
+                    return $response;
+                } catch (Exception $legacyException) {
+                    if (strpos($legacyException->getMessage(), "Error HTTP: 401") !== false || strpos($legacyException->getMessage(), "Error HTTP: 500") !== false) {
+                        return $this->autenticarDesdeListado($nombre_usuario, $password);
+                    }
+                    throw $legacyException;
+                }
             }
-            // Para otros errores, lanzar la excepción
-            throw $e;
+
+            if (strpos($e->getMessage(), "Error HTTP: 401") !== false) {
+                return $this->autenticarDesdeListado($nombre_usuario, $password);
+            }
+
+            return $this->autenticarDesdeListado($nombre_usuario, $password);
+        }
+    }
+
+    private function autenticarDesdeListado($nombre_usuario, $password)
+    {
+        try {
+            $usuarios = $this->request->request('GET', $this->basePath);
+            if (!$usuarios) {
+                return null;
+            }
+
+            foreach ($usuarios as $usuario) {
+                $username = null;
+                if (isset($usuario->nombreUsuario)) {
+                    $username = $usuario->nombreUsuario;
+                } elseif (isset($usuario->nombre_usuario)) {
+                    $username = $usuario->nombre_usuario;
+                }
+
+                if ($username !== null
+                    && strcasecmp($username, $nombre_usuario) === 0
+                    && isset($usuario->password)
+                    && $usuario->password === $password) {
+                    return $usuario;
+                }
+            }
+
+            return null;
+        } catch (Exception $e) {
+            return null;
         }
     }
 }

@@ -67,24 +67,51 @@ public class FuncionesUsuario {
     }
 
     @POST
+    @Path("/inicioSesion")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response inicioSesion(LoginRequest loginRequest) {
+        if (loginRequest == null
+                || loginRequest.getNombreUsuarioResolved() == null
+                || loginRequest.getPassword() == null) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Peticion invalida").build();
+        }
+        return autenticar(loginRequest.getNombreUsuarioResolved(), loginRequest.getPassword());
+    }
+
+    // Compatibilidad con versiones antiguas de clientes (URL params).
+    @POST
     @Path("/inicioSesion/{nombre_usuario}/{password}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response inicioSesion(@PathParam("nombre_usuario") String nombre_usuario,
-            @PathParam("password") String password1) {
+    public Response inicioSesionLegacyPost(@PathParam("nombre_usuario") String nombreUsuario,
+                                           @PathParam("password") String passwordLogin) {
+        return autenticar(nombreUsuario, passwordLogin);
+    }
+
+    // Compatibilidad adicional si algun cliente antiguo usa GET.
+    @GET
+    @Path("/inicioSesion/{nombre_usuario}/{password}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response inicioSesionLegacyGet(@PathParam("nombre_usuario") String nombreUsuario,
+                                          @PathParam("password") String passwordLogin) {
+        return autenticar(nombreUsuario, passwordLogin);
+    }
+
+    private Response autenticar(String nombreUsuario, String passwordLogin) {
         Usuario usuario = null;
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             Connection conexion = DriverManager.getConnection(url, user, password);
             PreparedStatement ps = conexion
                     .prepareStatement("SELECT * FROM usuarios WHERE nombre_usuario = ? AND password = ?");
-            ps.setString(1, nombre_usuario);
-            ps.setString(2, password1);
+            ps.setString(1, nombreUsuario);
+            ps.setString(2, passwordLogin);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),rs.getString("email"), rs.getString("fecha_nacimiento"), rs.getString("password"));
                 return Response.ok(usuario).build();
             }
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("No crea usuario").build();
+            return Response.status(Response.Status.UNAUTHORIZED).entity("Credenciales incorrectas").build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
@@ -129,4 +156,40 @@ public class FuncionesUsuario {
     }
 
 
+    public static class LoginRequest {
+        private String nombreUsuario;
+        private String nombre_usuario;
+        private String password;
+
+        public String getNombreUsuario() {
+            return nombreUsuario;
+        }
+
+        public void setNombreUsuario(String nombreUsuario) {
+            this.nombreUsuario = nombreUsuario;
+        }
+
+        public String getNombre_usuario() {
+            return nombre_usuario;
+        }
+
+        public void setNombre_usuario(String nombre_usuario) {
+            this.nombre_usuario = nombre_usuario;
+        }
+
+        public String getNombreUsuarioResolved() {
+            if (nombreUsuario != null && !nombreUsuario.isEmpty()) {
+                return nombreUsuario;
+            }
+            return nombre_usuario;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+    }
 }

@@ -4,14 +4,18 @@
 echo "<h1>Test de Conexión API</h1>";
 
 // Función para hacer requests sin procesar JSON
-function testRequest($url) {
+function testRequest($url, $method = 'GET', $data = null) {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'Content-Type: application/json',
         'Accept: application/json'
     ]);
+    if ($data !== null) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    }
     
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -38,7 +42,14 @@ echo "<h2>2. Probar inicio de sesión</h2>";
 $testUser = "test";  // Cambia esto
 $testPass = "test";  // Cambia esto
 
-$result2 = testRequest("http://localhost:8080/apirest/rest/usuarios/inicioSesion/" . urlencode($testUser) . "/" . urlencode($testPass));
+$result2 = testRequest(
+    "http://localhost:8080/apirest/rest/usuarios/inicioSesion",
+    "POST",
+    [
+        "nombreUsuario" => $testUser,
+        "password" => $testPass
+    ]
+);
 echo "<p>HTTP Code: " . $result2['httpCode'] . "</p>";
 echo "<pre>Response: " . htmlspecialchars($result2['response']) . "</pre>";
 ?>
