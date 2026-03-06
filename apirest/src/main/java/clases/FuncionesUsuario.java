@@ -35,6 +35,7 @@ public class FuncionesUsuario {
             ResultSet rs = st.executeQuery("SELECT * FROM usuarios");
             while (rs.next()) {
                 usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("email"), rs.getString("fecha_nacimiento"), rs.getString("password"));
+                usuario.setIdUsuario(rs.getInt("id_usuario"));
                 usuarios.add(usuario);
             }
             return Response.ok(usuarios).build();
@@ -109,6 +110,7 @@ public class FuncionesUsuario {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),rs.getString("email"), rs.getString("fecha_nacimiento"), rs.getString("password"));
+                usuario.setIdUsuario(rs.getInt("id_usuario"));
                 return Response.ok(usuario).build();
             }
             return Response.status(Response.Status.UNAUTHORIZED).entity("Credenciales incorrectas").build();
@@ -130,6 +132,7 @@ public class FuncionesUsuario {
             if (rs.next()) {
                 usuario = new Usuario(rs.getString("nombre_usuario"), rs.getString("nombre"), rs.getString("apellidos"),
                         rs.getString("email"), rs.getString("fecha_nacimiento"), rs.getString("password"));
+                usuario.setIdUsuario(rs.getInt("id_usuario"));
             }
             return Response.ok(usuario).build();
         } catch (Exception e) {
