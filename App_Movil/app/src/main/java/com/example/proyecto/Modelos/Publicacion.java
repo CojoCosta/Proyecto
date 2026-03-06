@@ -52,6 +52,11 @@ public class Publicacion {
     }
     public Publicacion() {
     }
+    public Publicacion (int id_usuario, String nombre_usuario, String contenido){
+        this.id_usuario = id_usuario;
+        this.nombre_usuario = nombre_usuario;
+        this.contenido = contenido;
+    }
 
     public Publicacion(int id_usuario,String nombre_usuario, String contenido, String fecha_publicacion) {
         this.id_usuario = id_usuario;

@@ -186,8 +186,7 @@ public class APIREST {
                         Publicacion p = new Publicacion(
                                 obj.optInt("id_usuario"),
                                 obj.optString("nombre_usuario"),
-                                obj.optString("contenido"),
-                                obj.optString("fecha_publicacion"));
+                                obj.optString("contenido"));
                         p.setIdPublicacion(obj.optInt("id_publicacion"));
                         listaPublicaciones.add(p);
                     }
@@ -225,11 +224,8 @@ public class APIREST {
                 con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("POST");
                 con.setRequestProperty("Content-Type", "application/json");
-                con.setRequestProperty("Accept", "application/json");
                 con.setDoOutput(true);
-
                 JSONObject jsonObject = new JSONObject();
-                // Enviamos los campos que espera la API (snake_case según obtenerPublicaciones)
                 jsonObject.put("id_usuario", idUsuario);
                 jsonObject.put("nombre_usuario", nombreUsuario);
                 jsonObject.put("contenido", contenido);

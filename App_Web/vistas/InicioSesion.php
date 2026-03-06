@@ -75,8 +75,9 @@
     <?php
     require_once 'Header.php';
     
-    if (isset($error_login)) {
-        echo '<p class="error">' . htmlspecialchars($error_login) . '</p>';
+    // Muestra el mensaje de error si existe en la URL
+    if (isset($_GET['error'])) {
+        echo '<p class="error">' . htmlspecialchars($_GET['error']) . '</p>';
     }
     ?>
     <form action="../controladores/ControladorUsuarios.php" method="post">
