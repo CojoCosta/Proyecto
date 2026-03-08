@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
@@ -145,14 +146,38 @@ public class FuncionesUsuario {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response modificarUsuario(@PathParam("nombre_usuario") String nombre_usuario, Usuario usuario) {
         try (Connection conexion = DriverManager.getConnection(url, user, password);
-        PreparedStatement ps = conexion.prepareStatement("UPDATE usuarios SET nombre=?, apellidos=?, email=?, password=? WHERE nombre_usuario=?")){
-            ps.setString(1, usuario.getNombre());
-            ps.setString(2, usuario.getApellidos());
-            ps.setString(3, usuario.getEmail());
-            ps.setString(4, usuario.getPassword());
-            ps.setString(5, nombre_usuario);
+        PreparedStatement ps = conexion.prepareStatement("UPDATE usuarios SET nombre_usuario=?, nombre=?, apellidos=?, email=?, password=? WHERE nombre_usuario=?")){
+            String nuevoNombreUsuario = usuario.getNombreUsuario();
+            if (nuevoNombreUsuario == null || nuevoNombreUsuario.isEmpty()) {
+                nuevoNombreUsuario = nombre_usuario;
+            }
+
+            ps.setString(1, nuevoNombreUsuario);
+            ps.setString(2, usuario.getNombre());
+            ps.setString(3, usuario.getApellidos());
+            ps.setString(4, usuario.getEmail());
+            ps.setString(5, usuario.getPassword());
+            ps.setString(6, nombre_usuario);
             ps.executeUpdate();
             return Response.ok("Actualizado").build();
+        } catch (Exception e) {
+            return Response.status(500).entity("Error interno: " + e.getMessage()).build();
+        }
+    }
+
+    @DELETE
+    @Path("/eliminar/{nombre_usuario}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response eliminarUsuario(@PathParam("nombre_usuario") String nombre_usuario) {
+        try (Connection conexion = DriverManager.getConnection(url, user, password);
+             PreparedStatement ps = conexion.prepareStatement("DELETE FROM usuarios WHERE nombre_usuario = ?")) {
+            ps.setString(1, nombre_usuario);
+            int filas = ps.executeUpdate();
+
+            if (filas == 0) {
+                return Response.status(Response.Status.NOT_FOUND).entity("Usuario no encontrado").build();
+            }
+            return Response.ok("Eliminado").build();
         } catch (Exception e) {
             return Response.status(500).entity("Error interno: " + e.getMessage()).build();
         }

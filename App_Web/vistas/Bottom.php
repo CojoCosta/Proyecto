@@ -28,7 +28,34 @@
         box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
     }
 
+    #bottom a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    #bottom a:hover {
+        text-decoration: underline;
+    }
+
 </style>
 
+<?php
+$vistaActual = basename($_SERVER['PHP_SELF']);
+$textoEnlace = '';
+$urlEnlace = '';
+
+if ($vistaActual === 'InicioSesion.php') {
+    $textoEnlace = '¿Todavia no tienes una cuenta? Registrate';
+    $urlEnlace = 'Registro.php';
+} elseif ($vistaActual === 'Registro.php') {
+    $textoEnlace = '¿Ya tienes cuenta? Inicia sesion aqui';
+    $urlEnlace = 'InicioSesion.php';
+}
+?>
+
 <div id = "bottom">
+    <?php if ($textoEnlace !== ''): ?>
+        <a href="<?php echo htmlspecialchars($urlEnlace); ?>"><?php echo htmlspecialchars($textoEnlace); ?></a>
+    <?php endif; ?>
 </div>

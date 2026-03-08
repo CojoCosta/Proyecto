@@ -1,5 +1,9 @@
 <?php
-require_once 'Header.php';
+if (!isset($publicaciones)) {
+    require_once __DIR__ . '/../modelos/Publicacion.php';
+    $publicacionModel = new Publicacion();
+    $publicaciones = $publicacionModel->getPublicaciones();
+}
 ?>
 
 <!DOCTYPE html>
@@ -203,7 +207,13 @@ require_once 'Header.php';
                 foreach ($publicaciones as $pub) {
                     echo '<div class="publicacion">';
                     echo '  <div class="publicacion-header">';
-                    echo '    <span class="publicacion-usuario">' . htmlspecialchars($pub->nombre_usuario) . '</span>';
+                    $usuarioPub = '';
+                    if (isset($pub->nombre_usuario)) {
+                        $usuarioPub = $pub->nombre_usuario;
+                    } elseif (isset($pub->nombreUsuario)) {
+                        $usuarioPub = $pub->nombreUsuario;
+                    }
+                    echo '    <span class="publicacion-usuario"><a href="PerfilUsuario.php?usuario=' . urlencode($usuarioPub) . '">' . htmlspecialchars($usuarioPub) . '</a></span>';
                     echo '    <span class="publicacion-fecha">' . htmlspecialchars($pub->fecha_publicacion) . '</span>';
                     echo '  </div>';
                     echo '  <div class="publicacion-contenido">' . htmlspecialchars($pub->contenido) . '</div>';
@@ -225,7 +235,7 @@ require_once 'Header.php';
     require_once 'Bottom.php';
     ?>
     
-    <a href="http://localhost:3000/App_Web/vistas/PerfilUsuario.php" class="btn-perfil" title="Mi Perfil">
+    <a href="PerfilUsuario.php" class="btn-perfil" title="Mi Perfil">
         &#128100;
     </a>
 </body>

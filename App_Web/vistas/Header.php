@@ -34,8 +34,15 @@
     }
 
 </style>
+<?php
+if (!isset($headerLogoHref) || $headerLogoHref === '') {
+    $headerLogoHref = '#';
+}
+?>
 <div id = "header">
     <div id = "logo">
-        <img src="../recursos/logoTransparent.png">
+        <a href="<?php echo htmlspecialchars($headerLogoHref); ?>">
+            <img src="../recursos/logoTransparent.png">
+        </a>
     </div>
 </div>

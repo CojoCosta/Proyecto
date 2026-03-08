@@ -46,12 +46,16 @@ class Request
             throw new Exception("Error HTTP: " . $httpCode . " - " . $response);
         }
 
-        $result = json_decode($response);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new Exception("Error decodificando JSON: " . json_last_error_msg());
+        if ($response === '' || $response === null) {
+            return null;
         }
 
-        return $result;
+        $result = json_decode($response);
+        if (json_last_error() === JSON_ERROR_NONE) {
+            return $result;
+        }
+
+        // Algunas rutas exitosas devuelven texto plano.
+        return $response;
     }
 }

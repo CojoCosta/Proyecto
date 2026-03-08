@@ -53,12 +53,12 @@ class Usuario
     public function registrarUsuario()
     {
         $data = [
-            'nombre_usuario'   => $this->nombre_usuario,
+            'nombreUsuario'    => $this->nombre_usuario,
             'nombre'           => $this->nombre,
             'apellidos'        => $this->apellidos,
             'email'            => $this->email,
             'password'         => $this->password,
-            'fecha_nacimiento' => $this->fecha_nacimiento
+            'fechaNacimiento'  => $this->fecha_nacimiento
         ];
 
         $response = $this->request->request('POST', $this->basePath, $data);
@@ -75,20 +75,23 @@ class Usuario
     }
 
     // Actualiza los datos de un usuario específico
-    public function actualizarUsuario()
+    public function actualizarUsuario($nombreUsuarioOriginal = null)
     {
         if (!$this->nombre_usuario) throw new Exception("Debe establecer nombre_usuario");
+        if (!$nombreUsuarioOriginal) {
+            $nombreUsuarioOriginal = $this->nombre_usuario;
+        }
 
         $data = [
-            'nombre_usuario'   => $this->nombre_usuario,
+            'nombreUsuario'    => $this->nombre_usuario,
             'nombre'           => $this->nombre,
             'apellidos'        => $this->apellidos,
             'email'            => $this->email,
             'password'         => $this->password,
-            'fecha_nacimiento' => $this->fecha_nacimiento
+            'fechaNacimiento'  => $this->fecha_nacimiento
         ];
 
-        $response = $this->request->request('PUT', $this->basePath . "/modificar/{$this->nombre_usuario}", $data);
+        $response = $this->request->request('PUT', $this->basePath . "/modificar/{$nombreUsuarioOriginal}", $data);
         if (!$response) throw new Exception("Error al actualizar usuario");
         return $response;
     }
@@ -114,11 +117,15 @@ class Usuario
             error_log("Response del login: " . json_encode($response));
 
             if (!$response) {
-                return $this->autenticarDesdeListado($nombre_usuario, $password);
+                return null;
             }
             return $response;
         } catch (Exception $e) {
             error_log("Excepcion en login: " . $e->getMessage());
+
+            if (strpos($e->getMessage(), "max_connections_per_hour") !== false) {
+                throw new Exception("Servicio temporalmente saturado. Espera unos minutos y vuelve a intentar.");
+            }
 
             if (strpos($e->getMessage(), "Error HTTP: 404") !== false || strpos($e->getMessage(), "Error HTTP: 405") !== false) {
                 try {
@@ -127,22 +134,26 @@ class Usuario
                         $this->basePath . "/inicioSesion/" . urlencode($nombre_usuario) . "/" . urlencode($password)
                     );
                     if (!$response) {
-                        return $this->autenticarDesdeListado($nombre_usuario, $password);
+                        return null;
                     }
                     return $response;
                 } catch (Exception $legacyException) {
+                    if (strpos($legacyException->getMessage(), "max_connections_per_hour") !== false) {
+                        throw new Exception("Servicio temporalmente saturado. Espera unos minutos y vuelve a intentar.");
+                    }
+
                     if (strpos($legacyException->getMessage(), "Error HTTP: 401") !== false || strpos($legacyException->getMessage(), "Error HTTP: 500") !== false) {
-                        return $this->autenticarDesdeListado($nombre_usuario, $password);
+                        return null;
                     }
                     throw $legacyException;
                 }
             }
 
             if (strpos($e->getMessage(), "Error HTTP: 401") !== false) {
-                return $this->autenticarDesdeListado($nombre_usuario, $password);
+                return null;
             }
 
-            return $this->autenticarDesdeListado($nombre_usuario, $password);
+            return null;
         }
     }
 
